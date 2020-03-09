@@ -1,0 +1,3308 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<!-- Begin Jekyll SEO tag v2.4.0 -->
+<title>API Docs | EVO Payments Gateway</title>
+<meta name="generator" content="Jekyll v3.7.2" />
+<meta property="og:title" content="API Docs" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="EVO Payment Integration Guide." />
+<meta property="og:description" content="EVO Payment Integration Guide." />
+<link rel="canonical" href="http://localhost:4000/" />
+<meta property="og:url" content="http://localhost:4000/" />
+<meta property="og:site_name" content="EVO Payments Gateway" />
+<script type="application/ld+json">
+{"url":"http://localhost:4000/","headline":"API Docs","name":"EVO Payments Gateway","description":"EVO Payment Integration Guide.","@type":"WebSite","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+		<link rel="stylesheet" href="/css/style.css">
+		<link rel="icon" type="image/png" href="/favicon.png">
+
+		
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		<script src="/js/main.js"></script>
+	</head>
+	<body>
+		<header>
+			<h1>
+				<button type="button" class="open-nav" id="open-nav"></button>
+				<a href="/"><img src="/images/logo.svg" height="40" alt="EVO Payments Gateway logo"></a>
+			</h1>
+
+			<form action="/search/" method="get">
+				<input type="text" name="q" id="search-input" placeholder="Search">
+				<input type="submit" value="Search" style="display: none;">
+			</form>
+
+			<div id="sidebar" class="sidebar">
+	
+	
+		
+	
+		
+			<section>
+				<h6>Getting Started</h6>
+				<ul>
+					
+					
+						<li>
+							<a href="#gettingstartedoverview">
+								Api Operations Overview
+								
+							</a>
+						</li>
+					
+				</ul>
+			</section>
+		
+	
+		
+			<section>
+				<h6>API Endpoint</h6>
+				<ul>
+					
+					
+						<li>
+							<a href="#apidirectAPI (1)">
+								
+								
+							</a>
+						</li>
+					
+						<li>
+							<a href="#apipayment">
+								/payment
+								<span class="endpoint post"></span>
+							</a>
+						</li>
+					
+						<li>
+							<a href="#apitokenize">
+								Tokenize Card
+								<span class="endpoint post"></span>
+							</a>
+						</li>
+					
+						<li>
+							<a href="#apidirectAPI (2)">
+								Direct API Integration
+								<span class="endpoint post"></span>
+							</a>
+						</li>
+					
+						<li>
+							<a href="#apiauthPurchaseVerifyAPIOperation">
+								AUTH/PURCHASE/VERIFY API Operation
+								<span class="endpoint post"></span>
+							</a>
+						</li>
+					
+						<li>
+							<a href="#apihostedPaymentPage">
+								Hosted Payment Page
+								<span class="endpoint post"></span>
+							</a>
+						</li>
+					
+						<li>
+							<a href="#apipaymentFormBrandingAndLocalization">
+								Payment Form Branding & Localisation
+								<span class="endpoint post"></span>
+							</a>
+						</li>
+					
+						<li>
+							<a href="#apirefund">
+								Refund Session token request
+								<span class="endpoint post"></span>
+							</a>
+						</li>
+					
+						<li>
+							<a href="#apirefundApiOperation">
+								REFUND API Operation
+								<span class="endpoint post"></span>
+							</a>
+						</li>
+					
+						<li>
+							<a href="#apivoid">
+								Void
+								<span class="endpoint post"></span>
+							</a>
+						</li>
+					
+						<li>
+							<a href="#apivoidApiOperation">
+								VOID API Operation
+								<span class="endpoint post"></span>
+							</a>
+						</li>
+					
+						<li>
+							<a href="#apicapture">
+								Capture
+								<span class="endpoint post"></span>
+							</a>
+						</li>
+					
+						<li>
+							<a href="#apicaptureApiOperation">
+								CAPTURE API Operation
+								<span class="endpoint post"></span>
+							</a>
+						</li>
+					
+						<li>
+							<a href="#apitransactionResultCall">
+								Transaction Result Call
+								<span class="endpoint post"></span>
+							</a>
+						</li>
+					
+						<li>
+							<a href="#apisessiontoken">
+								/session token/
+								<span class="endpoint post"></span>
+							</a>
+						</li>
+					
+				</ul>
+			</section>
+		
+	
+		
+			<section>
+				<h6>Use Cases</h6>
+				<ul>
+					
+					
+						<li>
+							<a href="#usecasespaymentFormBrandingAndLocalization">
+								Payment Form Branding & Localisation
+								
+							</a>
+						</li>
+					
+						<li>
+							<a href="#usecasesIncomingTokenMigration">
+								Incoming Token Migration
+								
+							</a>
+						</li>
+					
+				</ul>
+			</section>
+		
+	
+</div>
+
+
+			<p class="copyright">
+				<a href="https://intelligentpayments.co.uk">
+					Copyright Intelligent Payments 2019
+				</a>
+			</p>
+		</header>
+		<div class="main">
+			
+
+	
+	
+
+	
+	
+		<section class="doc-content">
+			<section class="left-docs">
+				<h3>
+					<a id="gettingstartedoverview">
+						Api Operations Overview
+						
+					</a>
+					<a class="editor-link" href="cloudcannon:collections/_gettingstarted/overview.md">Edit</a>
+				</h3>
+				
+
+				
+
+				<p>This API Operations Overview is intended enable planning and integration with the IPG Gateway APIs  by:</p>
+<ul>
+  <li>Merchant business and technology staff</li>
+  <li>Shopping Cart Plugin providers</li>
+</ul>
+
+<p>The document defines the external interfaces to the IPG Gateway necessary to:</p>
+<ul>
+  <li>Request payment card tokens</li>
+  <li>Submit authorisation transactions</li>
+  <li>Submit purchases/sales transactions</li>
+  <li>Capture (full or partial) funds from customers’ accounts as a result of successful authorisation transactions</li>
+  <li>Void authorised payment requests</li>
+  <li>Refund (full or partial) purchases (captured payments)</li>
+  <li>Request transactions statuses</li>
+  <li>Integrate PCI Compliant Payment Forms</li>
+  <li>Receive Transaction Call results</li>
+</ul>
+
+<p>The reader should have the knowledge and understanding of the payments industry processes, and the role of the payment processer (the IPG Gateway) in those payment processes.</p>
+
+
+				
+			</section>
+			
+		</section>
+	
+
+	
+	
+		<section class="doc-content">
+			<section class="left-docs">
+				<h3>
+					<a id="apidirectAPI (1)">
+						
+						
+					</a>
+					<a class="editor-link" href="cloudcannon:collections/_api/directAPI (1).md">Edit</a>
+				</h3>
+				
+
+				
+
+				
+
+
+				
+			</section>
+			
+		</section>
+	
+		<section class="doc-content">
+			<section class="left-docs">
+				<h3>
+					<a id="apipayment">
+						/payment
+						
+							<span class="endpoint post"></span>
+						
+					</a>
+					<a class="editor-link" href="cloudcannon:collections/_api/payment.md">Edit</a>
+				</h3>
+				
+
+				
+						<h6>Parameters</h6>
+						<dl>
+								
+										<dt>Purchase</dt>
+										<dt1></dt1>
+										<dt2></dt2>
+										<dd></dd>
+										
+								
+										<dt>Authorize</dt>
+										<dt1></dt1>
+										<dt2></dt2>
+										<dd></dd>
+										
+								
+										<dt>Verify</dt>
+										<dt1></dt1>
+										<dt2></dt2>
+										<dd></dd>
+										
+								
+										<dt>Tokenize</dt>
+										<dt1></dt1>
+										<dt2></dt2>
+										<dd></dd>
+										
+								
+						</dl>
+				
+
+				<p class="warning">You can’t make these calls without a session token</p>
+<p class="info">Please make sure that you’re passing these calls from a whitelisted IP</p>
+
+
+				
+			</section>
+			
+		</section>
+	
+		<section class="doc-content">
+			<section class="left-docs">
+				<h3>
+					<a id="apitokenize">
+						Tokenize Card
+						
+							<span class="endpoint post"></span>
+						
+					</a>
+					<a class="editor-link" href="cloudcannon:collections/_api/tokenize.md">Edit</a>
+				</h3>
+				
+					<p class="description">Tokenize a card</p>
+				
+
+				
+						<h6>Parameters</h6>
+						<dl>
+								
+										<dt>merchantId</dt>
+										<dt1>Integer(18)</dt1>
+										<dt2>mandatory</dt2>
+										<dd>The identifier for the merchant in the IPG Gateway provided at on-boarding.  This must be the same used in the related session token request.</dd>
+										
+								
+										<dt>token</dt>
+										<dt1>String (40)</dt1>
+										<dt2>mandatory</dt2>
+										<dd>Session Token received in the Session Token Response - Processed</dd>
+										
+								
+										<dt>number</dt>
+										<dt1>String(100)</dt1>
+										<dt2>mandatory</dt2>
+										<dd>The payment card number, primary account number (PAN), or simply a card number for the payment card being tokenised. The card number must be a single string of numbers, with no spaces, dashes or other characters</dd>
+										
+								
+										<dt>nameOnCard</dt>
+										<dt1>String (150)</dt1>
+										<dt2>mandatory</dt2>
+										<dd>Cardholder name as written on the payment card</dd>
+										
+								
+										<dt>expiryMonth</dt>
+										<dt1>String (2)</dt1>
+										<dt2>mandatory</dt2>
+										<dd>Card expiration month as a number, e.g. “04”.</dd>
+										
+								
+										<dt>expiryYear</dt>
+										<dt1>String (4)</dt1>
+										<dt2>mandatory</dt2>
+										<dd>Card expiration year as a number, e.g. “2020”.</dd>
+										
+								
+										<dt>cardDescription</dt>
+										<dt1>String (50)</dt1>
+										<dt2>optional</dt2>
+										<dd>Free form text field for the merchant’s use that is used for reconciliation e.g. merchant’s internal card’s sequence id</dd>
+										
+								
+										<dt>startMonth</dt>
+										<dt1>String (2)</dt1>
+										<dt2>conditional</dt2>
+										<dd>Card issued month as a number, e.g. “04”. Condition - Only used for some card types. Required for Maestro; Optional for all other cards</dd>
+										
+								
+										<dt>startYear</dt>
+										<dt1>String (4)</dt1>
+										<dt2>conditional</dt2>
+										<dd>Card issued month as a number, e.g. “04”. Condition - Only used for some card types.  Required for Maestro; Optional for all other cards</dd>
+										
+								
+										<dt>issueNumber</dt>
+										<dt1>String (2</dt1>
+										<dt2>conditional</dt2>
+										<dd>Card issued month as a number, e.g. “04”.  Condition - Only used for some card types.  Required for Maestro; Optional for all other cards</dd>
+										
+								
+						</dl>
+				
+
+				
+
+
+				
+						
+								
+
+
+<div title="jQuery" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span> <span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://apiuat.test.boipapaymentgateway.com/payment?</span><span class="dl">"</span><span class="o">&gt;</span> <span class="p">{</span>
+<span class="nx">merchantId</span><span class="o">=</span><span class="mi">111111</span><span class="p">,</span> <span class="nx">token</span><span class="o">=</span><span class="nx">abcde12345abcde12345</span><span class="p">,</span> <span class="nx">number</span><span class="o">=</span><span class="mi">4111111111111111</span><span class="p">,</span> <span class="nx">nameOnCard</span><span class="o">=</span><span class="nx">NAME</span><span class="o">+</span><span class="nx">OF</span><span class="o">+</span><span class="nx">CARD</span><span class="o">+</span><span class="nx">OWNER</span><span class="p">,</span> <span class="nx">expiryMonth</span><span class="o">=</span><span class="mi">04</span><span class="p">,</span> <span class="nx">expiryYear</span><span class="o">=</span><span class="mi">2020</span><span class="p">,</span> <span class="nx">cardDescription</span><span class="o">=</span><span class="nx">Customer</span> <span class="nx">ID</span> <span class="mi">123456</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+								
+						
+			</section>
+			
+					<section class="right-code">
+						
+								
+
+
+<div title="Response" class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GB"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"resultId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e086f9ad-6a78-4c56-b4e7-059764246811"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"merchantId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"890490"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cardType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"400"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"customerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"testTokenize"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"additionalDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nl">"cardToken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5512732598811111"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"processingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cardIssuer"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+						
+								
+
+
+<div title="Error" class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failure"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"resultId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4e879e03-9ff1-481e-9611-b5155328a53f"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"additionalDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> 
+  </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"messageCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This field is required in [REQUEST]"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fieldName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+</span><span class="nl">"processingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+						
+				</section>
+			
+		</section>
+	
+		<section class="doc-content">
+			<section class="left-docs">
+				<h3>
+					<a id="apidirectAPI (2)">
+						Direct API Integration
+						
+							<span class="endpoint post"></span>
+						
+					</a>
+					<a class="editor-link" href="cloudcannon:collections/_api/directAPI (2).md">Edit</a>
+				</h3>
+				
+					<p class="description">The purpose of this document is to describe the AUTH/PURCHASE/VERIFY (Direct API Integration) API Operation to enable merchant developers to integrate their webpages with the IPG Gateway.  Refer to the IPG Gateway – 0 – Overview document for how this API Operation is used in the merchant processes. The AUTH/PURCHASE/VERIFY (Direct API Integration) API Operation allows the merchant using the Direct API Integration Method to send customer authorise and purchase payment card transactions, or payment card details for verification through the IPG Gateway</p>
+				
+
+				
+						<h6>Parameters</h6>
+						<dl>
+								
+										<dt>merchantId</dt>
+										<dt1>Integer(18)</dt1>
+										<dt2>mandatory</dt2>
+										<dd>The identifier for the merchant in the IPG Gateway provided at on-boarding.  This must be the same used in the related session token request.</dd>
+										
+								
+										<dt>password</dt>
+										<dt1>String (64)</dt1>
+										<dt2>mandatory</dt2>
+										<dd>The merchant’s password in the IPG Gatewayprovided at on-boarding</dd>
+										
+								
+										<dt>action</dt>
+										<dt1>String(enum)</dt1>
+										<dt2>mandatory</dt2>
+										<dd>Must be “AUTH”, “PURCHASE” or “VERIFY”For EVO Mexico/Banamex eGlobal Installments Plans this mustbe “AUTH” or “PURCHASE”; plans cannot be initiated from a “VERIFY” operatio</dd>
+										
+								
+										<dt>timestamp</dt>
+										<dt1>Integer (13)</dt1>
+										<dt2>mandatory</dt2>
+										<dd>Milliseconds since 1970-01-01 00:00:00</dd>
+										
+								
+										<dt>allowOriginUrl</dt>
+										<dt1>String (253)</dt1>
+										<dt2>mandatory</dt2>
+										<dd>The merchant's URLthat will make the Auth/Purchase/VerifyRequest(see Section Auth/Purchase/Verify Request) Cross-Origin Resource Sharing (CORS)headers will allow only this origin</dd>
+										
+								
+										<dt>quickSale</dt>
+										<dt1>Boolean</dt1>
+										<dt2>optional</dt2>
+										<dd>A flag to indicate if a quick sale was performed where no customer information was taken.If set to TRUE:AcustomerIdwill be generated by the IPG GatewaydatabaseThecustomerAddressPostalCodeand customerAddressCountryfields should be completed for the AVS checks on the payment cardThe other‘customer’ and ‘payer’ parameters should not be supplied and willbe ignoredThe customer name in the IPG Gatewaydatabasewill be set to ‘Quick Sale’ –this will bethe indicator in the Back-Office/Virtual Terminal transactions tablesIf set to FALSE or omitted, customer information should be supplied in the ‘customer’ and ‘payer’ prefixed parameters.  Anew customer record will be created in the IPG Gatewaydatabase using thecustomerId</dd>
+										
+								
+										<dt>customerId</dt>
+										<dt1>String (20)</dt1>
+										<dt2>conditional</dt2>
+										<dd>Customer identifier in the merchant system,or the value generated by the IPG Gatewayin the TOKENIZE API Operation(see IPG Gateway–1 –TOKENIZE).This mustbe the value supplied in or by the TOKENIZE API Operation.  The value is used to validate that the payment card token is for the correct customer.If the customerIdvalue is not the same held against the payment card token in the IPG Gatewaydatabase a Session Token Response –Not Processed(section 1.3) is returned.Mandatory for payment cards methodMust not be supplied if quickSale= TRUEOptional for alternative payment methodsIf the parameter is omitted or no value is providedfor a first time use of the payment card, the IPG Gatewaywill generate a value, which will be stored internally against the payment card token and returned in the Auth/Purchase/VerifyResponse –Processed(section ...)</dd>
+										
+								
+										<dt>firstTimeTransaction</dt>
+										<dt1>Boolean</dt1>
+										<dt2>optional</dt2>
+										<dd>A  flag to indicate if the transaction is the customer’s first. For some merchant configurations, this forces 3D Secure processing. Note - if a customerIdvalue is not provided, the IPG Gatewaywill always treat the transaction as a first-time transaction for the customer.</dd>
+										
+								
+										<dt>merchantTxId</dt>
+										<dt1>String (50)</dt1>
+										<dt2>optional</dt2>
+										<dd>The merchant’s reference for the transactionIf the parameter is empty or omitted, a transaction id will be generated by the IPG Gatewayas a hexadecimalstring, and returned in the Redirection Response and Auth/Purchase/Verify Response - Processed</dd>
+										
+								
+										<dt>freeText</dt>
+										<dt1>String (200)</dt1>
+										<dt2>optional</dt2>
+										<dd>A free text field for use by the merchant that is returned in the Transaction Result Call (see IPG Gateway -6 -TRANSACTION RESULT CALL: TRANSACTIONS DESCRIPTION</dd>
+										
+								
+										<dt>cardOnFileType</dt>
+										<dt1>String (10)</dt1>
+										<dt2>conditional</dt2>
+										<dd>Indicates if the transaction is the first in a series of COF transactions or a transaction from already stored credentialsConditions - Mandatory ifPayment originates from stored payment card credentials, i.e. the cardholder or merchant user did not input the card data during the transaction process, e.g. OneClick or pre-populated payment pages from stored card dataValues:“First”:If the transaction is starting a series of COF transactions“Repeat”:If the transaction is a subsequent transaction.</dd>
+										
+								
+										<dt>cardOnFileInitiator</dt>
+										<dt1>String (10)</dt1>
+										<dt2>conditional</dt2>
+										<dd>Indicates if the COF transaction is a:Cardholder Initiated Transaction(CIT) where the cardholder actively selects the card to use, and completes the transaction using previously stored details.  Merchant Initiated Transaction(MIT) where a merchant submitsa transaction using previously stored detailed without the cardholder's participation. For example, a recurring payment.Conditions - Mandatory if:cardOnFileType = “Repeat”A value is not required if cardOnFileType= “First” and will be ignoredValues:“Cardholder”:If a Cardholder Initiated Transaction“Merchant”:If a Merchant Initiated Transaction</dd>
+										
+								
+										<dt>cardOnFileInitialTransactionId</dt>
+										<dt1>String (50)</dt1>
+										<dt2>conditional</dt2>
+										<dd>The merchant’s transaction identifier1for the transaction that started the COF series of payments, i.e. the transaction where cardOnFileType= “First”;the merchantTxIdvalue sent in the original Session Token Request or returned in the Auth/Purchase/Verify Response –ProcessedNote - this mustbe the transaction identifier for the specific set of transactions.  For example, if the customer has multiple recurring payments plans with the merchant, this value for the payment being request must be the initial payment for the planConditions - Mandatory if cardOnFileType = “Repeat”For OneClick transactions this mustbe the data.oneClickPaymentMethods.originalTransactionIdreturned in the Get OneClick Payment Methods Response –ProcessedA value is not required if cardOnFileType= “First” and will be ignored</dd>
+										
+								
+										<dt>operatorId</dt>
+										<dt1>String (20)</dt1>
+										<dt2>optional</dt2>
+										<dd>Identifier of the merchant’s operator or agent on behalf of the end customer, if the operation is not performed by the merchant, and the merchant wants to track the operator who performed the transaction</dd>
+										
+								
+										<dt>brandId</dt>
+										<dt1>Integer (18)</dt1>
+										<dt2>optional</dt2>
+										<dd>The IPG GatewayBrand Id for the merchant’s goods or services supplied at on-boardingIf not provided the merchant’s default IPG GatewayBrand Id will be used</dd>
+										
+								
+										<dt>channel</dt>
+										<dt1>String (enum)</dt1>
+										<dt2>mandatory</dt2>
+										<dd>The transaction channel through which the payment was taken:“ECOM”for card present e-commerce type transactions that are customer initiated, usually through a website checkout screen“MOTO”for card not present transactions that are merchant initiated, usually through a virtual terminal type application developed by the merchant</dd>
+										
+								
+										<dt>userDevice</dt>
+										<dt1>String (enum)</dt1>
+										<dt2>optional</dt2>
+										<dd>Type of device used, accepted values “MOBILE”“DESKTOP”“UNKNOWN” (default value if no value provided)</dd>
+										
+								
+										<dt>userAgent</dt>
+										<dt1>String (1024)</dt1>
+										<dt2>optional</dt2>
+										<dd>The user agent of the browser from which the transaction was performed, for merchant tracking if required</dd>
+										
+								
+										<dt>amount</dt>
+										<dt1>BigDecimal(15.2 or 15.3)</dt1>
+										<dt2>optional</dt2>
+										<dd>The total transaction amount, including tax, shipping,surcharge and discount amountsIf action= “AUTH” or “PURCHASE”, if a value is supplied this must be > 0.00If action= “VERIFY”, this must be 0.00 or omitted See Appendix A - UAT Trigger Values</dd>
+										
+								
+										<dt>taxAmount</dt>
+										<dt1>BigDecimal(15.2 or 15.3)</dt1>
+										<dt2>optional</dt2>
+										<dd>Tax amountas a currency value (not percentage) If action= “VERIFY”, this must be 0.00 or omitted</dd>
+										
+								
+										<dt>shippingAmount</dt>
+										<dt1>BigDecimal(15.2 or 15.3)</dt1>
+										<dt2>optional</dt2>
+										<dd>Shipping amount If action= “VERIFY”, this must be 0.00 or omitted</dd>
+										
+								
+										<dt>chargeAmount</dt>
+										<dt1>BigDecimal(15.2 or 15.3)</dt1>
+										<dt2>optional</dt2>
+										<dd>Surcharge amount If action= “VERIFY”, this must be 0.00 or omitted</dd>
+										
+								
+										<dt>discountAmount</dt>
+										<dt1>BigDecimal(15.2 or 15.3)</dt1>
+										<dt2>optional</dt2>
+										<dd>Discount amount If action= “VERIFY”, this must be 0.00 or omitted</dd>
+										
+								
+										<dt>currency</dt>
+										<dt1>String (enum)</dt1>
+										<dt2>mandatory</dt2>
+										<dd>The ISO alpha-3 code for the currency as defined in the ISO 4217 standard</dd>
+										
+								
+										<dt>country</dt>
+										<dt1>String (enum)</dt1>
+										<dt2>mandatory</dt2>
+										<dd>The ISO alpha-2 code country in which the transaction takes place, as defined in the ISO 3166 standardIf this is not known or unavailable, the customerAddressCountrywill be used.</dd>
+										
+								
+										<dt>paymentSolutionId</dt>
+										<dt1>Integer(18)</dt1>
+										<dt2>optional</dt2>
+										<dd>The IPG GatewayPayment Solution IdentifierSee IPG Gateway–7 –GET AVAILABLE PAYMENT SOLUTIONSfor valid values</dd>
+										
+								
+										<dt>language</dt>
+										<dt1>String(enum)</dt1>
+										<dt2>optional</dt2>
+										<dd>{"not used by Direct API Integration merchants –used by the Hosted Payment Page integration to determine the language for the hosted payment page"=>nil}</dd>
+										
+								
+										<dt>s_text1, s_text2... s_text5</dt>
+										<dt1>String(200)</dt1>
+										<dt2>optional</dt2>
+										<dd>5 Text fields for general use</dd>
+										
+								
+										<dt>d_date1, d_date2... d_date5</dt>
+										<dt1>Date/Time</dt1>
+										<dt2>optional</dt2>
+										<dd>5 Date fields for general use.Format - DD/MM/YYYY hh:mm:ss–the time part can be omitted, resulting in 00:00:00</dd>
+										
+								
+										<dt>b_bool1, b_bool2... b_bool5</dt>
+										<dt1>Boolean</dt1>
+										<dt2>optional</dt2>
+										<dd>5 Boolean fields for general use–accepted values are "true" and "false"</dd>
+										
+								
+										<dt>n_num1, n_num2... n_num5</dt>
+										<dt1>BigDecimal(7.2)</dt1>
+										<dt2>optional</dt2>
+										<dd>5 Numeric fields for general use–a dot “.” must be used as a decimal separator,not the comma "," and athousand separatormust not be used</dd>
+										
+								
+										<dt>merchantNotificationUrl</dt>
+										<dt1>String(200)</dt1>
+										<dt2>mandatory</dt2>
+										<dd>The merchant’s server-to-server communications URL,to which the Transaction Result Call will be sentSee IPG Gateway –3–TRANSACTION RESULT CALLdocument</dd>
+										
+								
+										<dt>merchantLandingPageUrl</dt>
+										<dt1>String(200)</dt1>
+										<dt2>optional</dt2>
+										<dd>The URL to which the customer’s browser is redirected for success or failure messaging</dd>
+										
+								
+										<dt>merchantLandingPageRedirectMethod</dt>
+										<dt1>String(enum)</dt1>
+										<dt2>optional</dt2>
+										<dd>Determines the methodby which the customeris redirected to merchantLandingPage. Permitted Values‘POST’, ‘GET’ If the parameter is not included, the API process defaults to POST If the parameter is included and is ‘POST’, the API process uses POST If the parameter is included and is ‘GET’, the API process uses GET  If the parameter isincluded and is empty/blank, aSession Token Response –Not Processed(section 1.3) with an error</dd>
+										
+								
+										<dt>customerDocumentType</dt>
+										<dt1>String(enum)</dt1>
+										<dt2>optional</dt2>
+										<dd>Type of document used to confirm the customer’s identification. IPG Gatewayaccepted values- PASSPORTNATIONAL_ID DRIVING_LICENSE UNIQUE_TAXPAYER_REFERENCE OTHER</dd>
+										
+								
+										<dt>customerDocumentNumber</dt>
+										<dt1>String(30)</dt1>
+										<dt2>conditional</dt2>
+										<dd>Customer document number Condition - Mandatory if customerDocumentTypeprovide</dd>
+										
+								
+										<dt>customerDocumentState</dt>
+										<dt1>String(2)</dt1>
+										<dt2>conditional</dt2>
+										<dd>For EVOUS Sales Channel Merchants, the alpha-2 code for the State that issued the Driver’s Licence.Condition - Mandatory if merchant Sales Channel is ‘EVOUS’ and customerDocumentType= ‘DRIVING_LICENSE’ and if country= ‘US’alpha-2 code for the US State that issued the licence –see Section B.1 ‘CA’alpha-2 code for the Canadian State that issued the licence –see Section B.2 ‘MX’alpha-2 code for the Mexican State that issued the licence –see Section B.3 Elseset to NULL</dd>
+										
+								
+										<dt>merchantReference</dt>
+										<dt1>String(200)</dt1>
+										<dt2>optional</dt2>
+										<dd>The merchant’s reference for the customer</dd>
+										
+								
+										<dt>customerFirstName</dt>
+										<dt1>String(50)</dt1>
+										<dt2>optional</dt2>
+										<dd>The merchant’s reference for the customer</dd>
+										
+								
+										<dt>customerLastName</dt>
+										<dt1>String(100)</dt1>
+										<dt2>optional</dt2>
+										<dd>Last name, surname or family name of the customer</dd>
+										
+								
+										<dt>customerSex</dt>
+										<dt1>String(enum)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer Sex - M (male) F (female)</dd>
+										
+								
+										<dt>customerDateOfBirth</dt>
+										<dt1>Date</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer date of birth –format DD/MM/YYYY</dd>
+										
+								
+										<dt>customerRegistrationDate</dt>
+										<dt1>Date</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer registration date on merchant’s site – format DD/MM/YYYYNote - this is used for reporting and in some risk tools where required</dd>
+										
+								
+										<dt>customerEmail</dt>
+										<dt1>String(60)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer email address</dd>
+										
+								
+										<dt>customerPhone</dt>
+										<dt1>String(100)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer phone number</dd>
+										
+								
+										<dt>customerIPAddress</dt>
+										<dt1>String(39)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer IP address from where purchase is made. Only IPv4 supported</dd>
+										
+								
+										<dt>customerAddressHouseName</dt>
+										<dt1>String(50)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer address house name</dd>
+										
+								
+										<dt>customerAddressHouseNumber</dt>
+										<dt1>String(5)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer address house number</dd>
+										
+								
+										<dt>customerAddressFlat</dt>
+										<dt1>String(5)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer address flat</dd>
+										
+								
+										<dt>customerAddressStreet</dt>
+										<dt1>String(50)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer address streetThe customer’s street should be supplied whenever possible as it is used with the customerAddressPostalCodevalue for AVS (Address Verification System) Checks, and so reduce the possibility of a payment decline</dd>
+										
+								
+										<dt>customerAddressCity</dt>
+										<dt1>String(50)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer address city</dd>
+										
+								
+										<dt>customerAddressDistrict</dt>
+										<dt1>String(50)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer address district</dd>
+										
+								
+										<dt>customerAddressPostalCode</dt>
+										<dt1>String(30)</dt1>
+										<dt2>conditional</dt2>
+										<dd>Customer address postal codeCondition - If quickSale= TRUE, customerAddressPostalCodeis mandatoryThe customer’s postal code (postcode/ZIP Code) should be supplied whenever possible as it is used with the customerAddressStreetvalue for AVS (Address Verification System) Checks, and so reduce the possibility of a payment decline</dd>
+										
+								
+										<dt>customerAddressCountry</dt>
+										<dt1>String(enum)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer address countryThe ISO alpha-2 code as defined in the ISO 3166 standard. Note - this will be used if country field is not supplied</dd>
+										
+								
+										<dt>customerAddressState</dt>
+										<dt1>String(40)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer address state, county or province</dd>
+										
+								
+										<dt>customerAddressPhone</dt>
+										<dt1>String(100)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer address phone</dd>
+										
+								
+										<dt>customerShippingAddressHouseName</dt>
+										<dt1>String(50)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer shipping address house name</dd>
+										
+								
+										<dt>customerShippingAddressHouseNumber</dt>
+										<dt1>String(5)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer shipping address house number</dd>
+										
+								
+										<dt>customerShippingAddressFlat</dt>
+										<dt1>String(5)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer shipping address flat</dd>
+										
+								
+										<dt>customerShippingAddressStreet</dt>
+										<dt1>String(50)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer shipping address street</dd>
+										
+								
+										<dt>customerShippingAddressCity</dt>
+										<dt1>String(50)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer shipping address city</dd>
+										
+								
+										<dt>customerShippingAddressDistrict</dt>
+										<dt1>String(50)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer shipping address district</dd>
+										
+								
+										<dt>customerShippingAddressPostalCode</dt>
+										<dt1>String(30)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer shipping address postal code</dd>
+										
+								
+										<dt>customerShippingAddressCountry</dt>
+										<dt1>String(enum)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer shipping address countryThe ISO alpha-2 code as defined in the ISO 3166 standard</dd>
+										
+								
+										<dt>customerShippingAddressState</dt>
+										<dt1>String(40)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer shipping address state, county or province</dd>
+										
+								
+										<dt>customerShippingAddressPhone</dt>
+										<dt1>String(100)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer shipping address phone</dd>
+										
+								
+										<dt>customerBillingAddressHouseName</dt>
+										<dt1>String(50)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer billing address house name</dd>
+										
+								
+										<dt>customerBillingAddressHouseNumber</dt>
+										<dt1>String(5)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer billing address house number</dd>
+										
+								
+										<dt>customerBillingAddressFlat</dt>
+										<dt1>String(5)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer billing address flat</dd>
+										
+								
+										<dt>customerBillingAddressStreet</dt>
+										<dt1>String(50)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer billing address street</dd>
+										
+								
+										<dt>customerBillingAddressCity</dt>
+										<dt1>String(50)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer billing address city</dd>
+										
+								
+										<dt>customerBillingAddressDisctrict</dt>
+										<dt1>String(50)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer billing address district</dd>
+										
+								
+										<dt>customerBillingAddressPostalCode</dt>
+										<dt1>String(30)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer billing address postal code</dd>
+										
+								
+										<dt>customerBillingAddressCountry</dt>
+										<dt1>String(enum)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer billing address countryThe ISO alpha-2 code as defined in the ISO 3166 standard</dd>
+										
+								
+										<dt>customerBillingAddressState</dt>
+										<dt1>String(40)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer billing address state</dd>
+										
+								
+										<dt>customerBillingAddressPhone</dt>
+										<dt1>String(100)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer billing address phone</dd>
+										
+								
+										<dt>payerFirstName</dt>
+										<dt1>String(50)</dt1>
+										<dt2>optional</dt2>
+										<dd>Payer first name, if the Payee is different to the CustomerRequired by some regions and payment services, e.g. PayU Latam in Brazil</dd>
+										
+								
+										<dt>payerLastName</dt>
+										<dt1>String(100)</dt1>
+										<dt2>optional</dt2>
+										<dd>Payer last name, if the Payee is different to the CustomerRequired by some regions and payment services, e.g. PayU Latam in Brazil</dd>
+										
+								
+										<dt>payerEmail</dt>
+										<dt1>String(60)</dt1>
+										<dt2>optional</dt2>
+										<dd>Payer email, if the Payee is different to the CustomerRequired by some regions and payment services, e.g. PayU Latam in Brazil</dd>
+										
+								
+										<dt>payerDateOfBirth</dt>
+										<dt1>Date</dt1>
+										<dt2>optional</dt2>
+										<dd>Payer date of birth, if the Payee is different to the CustomerRequired by some regions and payment services, e.g. PayU Latam in Brazil</dd>
+										
+								
+										<dt>payerPhone</dt>
+										<dt1>String(100)</dt1>
+										<dt2>optional</dt2>
+										<dd>Payer phone, if the Payee is different to the CustomerRequired by some regions and payment services, e.g. PayU Latam in Brazil</dd>
+										
+								
+										<dt>payerDocumentType</dt>
+										<dt1>String(enum)</dt1>
+										<dt2>optional</dt2>
+										<dd>Type of document used to confirm the payer’s identification, if the Payee is different to the CustomerIPG Gatewayaccepted values - PASSPORT NATIONAL_ID DRIVING_LICENSE UTR OTHER. Required by some regions and payment services, e.g. PayU Latam in Brazil</dd>
+										
+								
+										<dt>payerDocumentNumber</dt>
+										<dt1>String(30)</dt1>
+										<dt2>conditional</dt2>
+										<dd>Payer document number, if the Payee is different to the CustomerCondition - Mandatory if payerDocumentTypeprovidedRequired by some regions and payment services, e.g. PayU Latam in Brazil</dd>
+										
+								
+										<dt>payerCustomerId</dt>
+										<dt1>String(20)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer identifier of the payee in the merchant’s systemRequired by some regions and payment services, e.g. PayU Latam in Brazil, if the payee is also a customer of the merchant</dd>
+										
+								
+										<dt>forceSecurePayment</dt>
+										<dt1>Boolean</dt1>
+										<dt2>optional</dt2>
+										<dd>For payment card transactionsonly, if the merchant has 3D Secure disabled for all transactions as a rule, this field can be used to force 3d Secure processing for individual transactions- If True - forces 3DSecure processing no matter the routing rules If False, not provided or NULL - the 3D Secure routing rules in the IPG Gatewayare usedIf 3D Secure processing is required, the Redirection Response is sent</dd>
+										
+								
+										<dt>processUnknownSecurePayment</dt>
+										<dt1>Boolean</dt1>
+										<dt2>optional</dt2>
+										<dd>For payment card transactions, this determines how "U" (Unknown) responses from the 3D Secure process are managed:If True and blockU is True:the transaction will be stopped in the IPG Gatewayand a Session Token Response –Not Processed(section 1.3) is returned</dd>
+										
+								
+										<dt>specinCreditCardToken</dt>
+										<dt1>String(100)</dt1>
+										<dt2>optional</dt2>
+										<dd>The payment card token received in the TOKENIZE API Operation, see IPG Gateway –1 –TOKENIZE For OneClick transactions this mustbe the data.oneClickPaymentMethods.payToken returned in the Get OneClick Payment Methods Response –Processed</dd>
+										
+								
+										<dt>specinProcessWithoutCvv2</dt>
+										<dt1>Boolean</dt1>
+										<dt2>optional</dt2>
+										<dd>A flag that indicates whether the payment card transaction is to be processed with or without the Card Security Code (CSC also called Card Verification Data [CVD], Card Verification Number, Card Verification Value [CVV], Card Verification Value Code, Card Verification Code [CVC], Verification Code [V-code or V code], or Signature Panel Code [SPC])This requires prior authorization by the IPG Gatewayand acquirer.</dd>
+										
+								
+										<dt>specinCCCartId</dt>
+										<dt1></dt1>
+										<dt2></dt2>
+										<dd></dd>
+										
+								
+										<dt>specinCCWalletToken</dt>
+										<dt1></dt1>
+										<dt2></dt2>
+										<dd></dd>
+										
+								
+										<dt>specinCCWalletId</dt>
+										<dt1></dt1>
+										<dt2></dt2>
+										<dd></dd>
+										
+								
+										<dt>bankMid</dt>
+										<dt1>String(50)</dt1>
+										<dt2>optional</dt2>
+										<dd>The merchant’s Bank MID with the Acquirer.Used by the merchant to control which acquirer bank MID will be used for the transaction.</dd>
+										
+								
+										<dt>storeCard</dt>
+										<dt1>Boolean</dt1>
+										<dt2>optional</dt2>
+										<dd>Determines how the payment card data is stored in the IPG Gateway.  Payment card data is always stored in the IPG Gatewayfor legislative and regulatorypurposes.This flag determines if the card remains active for use in the IPG Gateway - If False the payment card is set to inactive If True or Missing the payment card is set to active</dd>
+										
+								
+										<dt>limitMin</dt>
+										<dt1>BigDecimal(15.2 or 15.3)</dt1>
+										<dt2>optional</dt2>
+										<dd>Sets a minimum transaction value allowed to be processed in the IPG GatewayThis overrides the minimum value set in the IPG Gatewaymerchant configurationIt is the merchant’s responsibility to set a value that will be accepted by the Acquirer and Issuer involved in the transaction process</dd>
+										
+								
+										<dt>limitMax</dt>
+										<dt1>BigDecimal(15.2 or 15.3)</dt1>
+										<dt2>optional</dt2>
+										<dd>Sets a maximum transaction value allowed to be processed in the IPG GatewayThis overrides the maximum value set in the IPG Gateway merchant configuration. It is the merchant’s responsibility to set a value that will be accepted by the Acquirer and Issuer involved in the transaction process</dd>
+										
+								
+										<dt>mmrpBillPayment</dt>
+										<dt1>String(10)</dt1>
+										<dt2>optional</dt2>
+										<dd>For the initial and subsequent transactions must be set to “Recurring”</dd>
+										
+								
+										<dt>mmrpCustomerPresent</dt>
+										<dt1>String(12)</dt1>
+										<dt2>conditional</dt2>
+										<dd>For the initial and subsequent transactions must be set to “BillPayment”Condition - required if mmrpBillPayment= “Recurring”</dd>
+										
+								
+										<dt>mmrpOriginalTransactionId</dt>
+										<dt1>String(50)</dt1>
+										<dt2>conditional</dt2>
+										<dd>For recurring transactions mustthe merchant’s transaction identifier for the transaction that started the series of Recurring PaymentsConditions - Required if mmrpBillPayment= “Recurring”, and not the initiating transaction</dd>
+										
+								
+										<dt>mmrpContractNumber</dt>
+										<dt1>String(50)</dt1>
+										<dt2>conditional</dt2>
+										<dd>Contract number is managed by the merchant and must be unique for each contractual agreement between the merchant and cardholder.Required for the initial and subsequent transactionsConditions - Required ifmmrpBillPayment= “Recurring”, andBanamex (EVO MX) merchant</dd>
+										
+								
+										<dt>selectedInstallmentsPlanId</dt>
+										<dt1>String(7)</dt1>
+										<dt2>optional</dt2>
+										<dd>The Plan ID of the chosen Instalments PlanIf not included in the context of Instalments Plans, the API Operation will be treated as a normal single purchase transactionOnly used by merchants from the EVO MX Sales Channel</dd>
+										
+								
+						</dl>
+				
+
+				
+
+
+				
+						
+								
+
+
+<div title="jQuery" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span> <span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://apiuat.test.boipapaymentgateway.com/payment?</span><span class="dl">"</span><span class="o">&gt;</span> <span class="p">{</span>
+<span class="nx">merchantId</span><span class="o">=</span><span class="mi">1111111</span><span class="o">&amp;</span><span class="nx">password</span><span class="o">=</span><span class="nx">klw74U6yt40mNo</span><span class="o">&amp;</span><span class="nx">merchantTxId</span><span class="o">=</span><span class="nx">XYZ123456789ABC</span><span class="o">&amp;</span><span class="nx">allowOriginUrl</span><span class="o">=</span><span class="nx">www</span><span class="p">.</span><span class="nx">merchantsite</span><span class="p">.</span><span class="nx">com</span><span class="o">&amp;</span><span class="nx">action</span><span class="o">=</span><span class="nx">AUTH</span><span class="o">&amp;</span><span class="nx">timestamp</span><span class="o">=</span><span class="mi">1249751864238</span><span class="o">&amp;</span><span class="nx">customerId</span><span class="o">=</span><span class="nx">ABD123</span><span class="o">&amp;</span><span class="nx">operatorId</span><span class="o">=</span><span class="nx">brian01</span><span class="o">&amp;</span><span class="nx">brandId</span><span class="o">=</span><span class="mi">987654321</span><span class="o">&amp;</span><span class="nx">channel</span><span class="o">=</span><span class="nx">ECOM</span><span class="o">&amp;</span><span class="nx">userDevice</span><span class="o">=</span><span class="nx">DESKTOP</span><span class="o">&amp;</span><span class="nx">amount</span><span class="o">=</span><span class="mi">120</span><span class="o">&amp;</span><span class="nx">taxAmount</span><span class="o">=</span><span class="mi">10</span><span class="o">&amp;</span><span class="nx">shippingAmount</span><span class="o">=</span><span class="mi">15</span><span class="o">&amp;</span><span class="nx">chargeAmount</span><span class="o">=</span><span class="mi">5</span><span class="o">&amp;</span><span class="nx">discountAmount</span><span class="o">=</span><span class="mi">10</span><span class="o">&amp;</span><span class="nx">currency</span><span class="o">=</span><span class="nx">GBP</span><span class="o">&amp;</span><span class="nx">country</span><span class="o">=</span><span class="nx">GB</span><span class="o">&amp;</span><span class="nx">paymentSolutionId</span><span class="o">=</span><span class="mi">500</span><span class="o">&amp;</span><span class="nx">merchantNotificationUrl</span><span class="o">=</span><span class="nx">www</span><span class="p">.</span><span class="nx">merchantsite</span><span class="p">.</span><span class="nx">com</span><span class="o">&amp;</span><span class="nx">merchantLandingPageUrl</span><span class="o">=</span><span class="nx">www</span><span class="p">.</span><span class="nx">merchant</span><span class="p">.</span><span class="nx">com</span><span class="o">&amp;</span><span class="nx">firstTimeTransaction</span><span class="o">=</span><span class="nx">Y</span><span class="o">&amp;</span><span class="nx">customerDocumentType</span><span class="o">=</span><span class="nx">PASSPORT</span><span class="o">&amp;</span><span class="nx">customerDocumentNumber</span><span class="o">=</span><span class="mi">12345678</span><span class="o">&amp;</span><span class="nx">merchantReference</span><span class="o">=</span><span class="nx">ABC123546</span><span class="o">&amp;</span><span class="nx">customerFirstName</span><span class="o">=</span><span class="nx">John</span><span class="o">&amp;</span><span class="nx">customerLastName</span><span class="o">=</span><span class="nx">Smith</span><span class="o">&amp;</span><span class="nx">customerSex</span><span class="o">=</span><span class="nx">M</span><span class="o">&amp;</span><span class="nx">customerDateOfBirth0</span><span class="o">=</span><span class="mi">01</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">1999</span><span class="o">&amp;</span><span class="nx">customerRegistrationDate</span><span class="o">=</span><span class="mi">01</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">2017</span><span class="o">&amp;</span><span class="nx">customerEmail</span><span class="o">=</span><span class="nx">john</span><span class="p">.</span><span class="nx">smith</span><span class="p">@</span><span class="nd">email</span><span class="p">.</span><span class="nx">com</span><span class="o">&amp;</span><span class="nx">customerPhone</span><span class="o">=</span><span class="mi">079525551234</span><span class="o">&amp;</span><span class="nx">customerIPAddress</span><span class="o">=</span><span class="mf">111.111</span><span class="p">.</span><span class="mf">111.111</span><span class="o">&amp;</span><span class="nx">customerAddressHouseName</span><span class="o">=</span><span class="nx">House</span><span class="o">+</span><span class="nx">Name</span><span class="o">&amp;</span><span class="nx">customerAddressHouseNumber</span><span class="o">=</span><span class="mi">1</span><span class="o">&amp;</span><span class="nx">customerAddressFlat</span><span class="o">=</span><span class="mi">3</span><span class="o">&amp;</span><span class="nx">customerAddressStreet</span><span class="o">=</span><span class="nx">Street</span><span class="o">+</span><span class="nx">Name</span><span class="o">&amp;</span><span class="nx">customerAddressCity</span><span class="o">=</span><span class="nx">London</span><span class="o">&amp;</span><span class="nx">customerAddressDistrict</span><span class="o">=</span><span class="nx">Mayfair</span><span class="o">&amp;</span><span class="nx">customerAddressPostalCode</span><span class="o">=</span><span class="nx">W1A</span><span class="o">+</span><span class="nx">A11</span><span class="o">&amp;</span><span class="nx">customerAddressCountry</span><span class="o">=</span><span class="nx">United</span><span class="o">+</span><span class="nx">Kingdom</span><span class="o">&amp;</span><span class="nx">customerAddressState</span><span class="o">=</span><span class="nx">London</span><span class="o">&amp;</span><span class="nx">customerAddressPhone</span><span class="o">=</span><span class="mi">00442025551234</span><span class="o">&amp;</span><span class="nx">forceSecurePayment</span><span class="o">=</span><span class="nx">True</span><span class="o">&amp;</span><span class="nx">processUnknownSecurePayment</span><span class="o">=</span><span class="nx">True</span><span class="o">&amp;</span><span class="nx">specinCreditCardToken</span><span class="o">=</span><span class="mi">45</span><span class="nx">ae201ghy23498FjMj701</span><span class="o">&amp;</span><span class="nx">specinProcessWithoutCvv2</span><span class="o">=</span><span class="nx">False</span><span class="o">&amp;</span><span class="nx">bankMid</span><span class="o">=</span><span class="mi">01000320</span><span class="nx">_MOTO</span><span class="o">+</span><span class="nx">EUR</span><span class="o">+</span><span class="nx">Test</span><span class="o">+</span><span class="nx">Bank</span><span class="o">+</span><span class="nx">MID</span><span class="o">&amp;</span><span class="nx">storeCard</span><span class="o">=</span><span class="nx">False</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+								
+						
+			</section>
+			
+					<section class="right-code">
+						
+								
+
+
+<div title="Response" class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"resultId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f52cc38a-7815-4f8c-8687-662cc63d56e9"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"merchantId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1111111"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"additionalDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nl">"cardToken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5512732598811111"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"processingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"96b7d82e-349f-4880-9b8a-928636437c75"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+						
+								
+
+
+<div title="Error" class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failure"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"resultId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bb248d1d-d657-4dbe-9f04-a279b384872c"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"additionalDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> 
+  </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"messageCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This field is required in [REQUEST]"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fieldName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"password"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+</span><span class="nl">"processingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+						
+				</section>
+			
+		</section>
+	
+		<section class="doc-content">
+			<section class="left-docs">
+				<h3>
+					<a id="apiauthPurchaseVerifyAPIOperation">
+						AUTH/PURCHASE/VERIFY API Operation
+						
+							<span class="endpoint post"></span>
+						
+					</a>
+					<a class="editor-link" href="cloudcannon:collections/_api/authPurchaseVerifyAPIOperation.md">Edit</a>
+				</h3>
+				
+					<p class="description">AUTH/PURCHASE/VERIFY API Request</p>
+				
+
+				
+						<h6>Parameters</h6>
+						<dl>
+								
+										<dt>merchantId</dt>
+										<dt1>Integer(18)</dt1>
+										<dt2>mandatory</dt2>
+										<dd>The identifier for the merchant in the IPG Gateway provided at on-boarding</dd>
+										
+								
+										<dt>token</dt>
+										<dt1>String (40)</dt1>
+										<dt2>mandatory</dt2>
+										<dd>Session Token received in the Session Token Response - Processed</dd>
+										
+								
+										<dt>freeText</dt>
+										<dt1>String (200)</dt1>
+										<dt2>optional</dt2>
+										<dd>A free text field for use by the merchant that is returned in the Transaction Result Call (see IPG Gateway - 6 - TRANSACTION RESULT CALL), can be used if not supplied in the Session Token Request</dd>
+										
+								
+										<dt>customerId</dt>
+										<dt1>String (20)</dt1>
+										<dt2>conditional</dt2>
+										<dd>Customer identifier in the merchant system, or the value generated by the IPG Gateway in a previous original payment transaction using the payment card or method. The value is used to validate that the payment card token is for the correct customer.  If the customerId value is not the same held against the payment card token in the IPG Gateway database a Auth/Purchase/Verify Response – Not Processed (section 2.4) is returned. This must be the value supplied in or by the TOKENIZE API Operation.  The value is used to validate that the payment card token is for the correct customer.•	Mandatory for payment cards method •	Must not be supplied if quickSale = TRUE •	Optional for alternative payment methods. If the parameter is omitted or no value is provided for a first time use of the payment card, the IPG Gateway will generate a value, which will be stored internally against the payment method and returned in the Auth/Purchase/Verify Response – Processed (section 2.3). Condition- Mandatory, if not received in the Session Token Request (section 1.1), otherwise ignored.</dd>
+										
+								
+										<dt>customerIPAddress</dt>
+										<dt1>String (39)</dt1>
+										<dt2>conditional</dt2>
+										<dd>Customer IP address from where purchase is made. Only IPv4 supported Condition - Mandatory, if not received in the Session Token Request (section 1.1), otherwise ignored</dd>
+										
+								
+										<dt>fraudToken</dt>
+										<dt1>String (50)</dt1>
+										<dt2>optional</dt2>
+										<dd>Antifraud token. If an antifraud tool has been executed before an analysis identifier is required by payment acquirer. Mandatory for transactions conducted in LATAM countries, and only when the merchant wishes the transaction to be conducted as direct integration (server-to-server), as opposed to browser-redirection based integration.</dd>
+										
+								
+										<dt>paymentSolutionId</dt>
+										<dt1>Integer (18)</dt1>
+										<dt2>conditional</dt2>
+										<dd>Payment solution identifier in the IPG Gateway. Condition- Mandatory, if not received in the Session Token Request (section 1.1), otherwise ignored.</dd>
+										
+								
+										<dt>setOneClickValueSettingForCard</dt>
+										<dt1>Boolean</dt1>
+										<dt2>optional</dt2>
+										<dd>If TRUE flags that the cardholder wishes to save the card stored in the specinCreditCardToken parameter for future OneClick transactions. Must be TRUE if the payment card is to be saved. Note - the card will only be available for use as a OneClick Payment Method, if the current transaction is successful.  Otherwise, the payment card will not be available in the future.  The customer will have to make another transaction that is successful.</dd>
+										
+								
+										<dt>specinCreditCardCVV</dt>
+										<dt1>String(5)</dt1>
+										<dt2>conditional</dt2>
+										<dd>Credit card CVV, if payment solution is credit card through the ECOM channel. Condition - Mandatory, if not received in the Session Token Request (section 1.1), otherwise ignored.</dd>
+										
+								
+										<dt>specinCreditCardToken</dt>
+										<dt1>String (100)</dt1>
+										<dt2>conditional</dt2>
+										<dd>The payment card token received in the TOKENIZE API Operation, see IPG Gateway – 1 – TOKENIZE Condition - Mandatory, if not received in the Session Token Request (section 1.1), otherwise ignored</dd>
+										
+								
+										<dt>specinCreditCardToken</dt>
+										<dt1>String (100)</dt1>
+										<dt2>conditional</dt2>
+										<dd>The payment card token received in the TOKENIZE API Operation, see IPG Gateway – 1 – TOKENIZE Condition - Mandatory, if not received in the Session Token Request (section 1.1), otherwise ignored</dd>
+										
+								
+										<dt>ipPlanId</dt>
+										<dt1>String (7)</dt1>
+										<dt2>optional</dt2>
+										<dd>The Plan ID of the chosen Instalments Plan. If not included in the context of Instalments Plans, the API Operation will be treated as a normal single purchase transaction. Only used by merchants from the EVO MX Sales Channel</dd>
+										
+								
+						</dl>
+				
+
+				
+
+
+				
+						
+								
+
+
+<div title="verify request" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span> <span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://apiuat.test.boipapaymentgateway.com/token?</span><span class="dl">"</span><span class="o">&gt;</span> <span class="p">{</span>
+   <span class="nx">merchantId</span><span class="o">=</span><span class="mi">1111111</span><span class="o">&amp;</span><span class="nx">token</span><span class="o">=</span><span class="nx">abcde12345abcde12345</span><span class="p">}</span>
+</code></pre></div></div>
+
+								
+								
+
+
+<div title="redirection response" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span> <span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://apiuat.test.boipapaymentgateway.com/token?</span><span class="dl">"</span><span class="o">&gt;</span> <span class="p">{</span><span class="err">“</span><span class="nx">result</span><span class="err">”</span><span class="p">:</span><span class="err">”</span><span class="nx">success</span><span class="err">”</span><span class="p">,</span><span class="dl">"</span><span class="s2">merchantId</span><span class="dl">"</span><span class="p">:</span><span class="mi">111111</span><span class="p">,</span><span class="dl">"</span><span class="s2">merchantTxId</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">abc123</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">txId</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">123</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">acquirerTxId</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">0009312</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">amount</span><span class="dl">"</span><span class="p">:</span><span class="mf">12.50</span><span class="p">,</span><span class="dl">"</span><span class="s2">currency</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">GBP</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">customerId</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">mgn456</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">action</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">PURCHASE</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">pan</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">45ae201ghy23498FjMj701</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">brandId</span><span class="dl">"</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="dl">"</span><span class="s2">paymentSolutionId</span><span class="dl">"</span><span class="p">:</span><span class="mi">500</span><span class="p">,</span><span class="dl">"</span><span class="s2">freeText</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">Added+10%+discount+on+the+item</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">language</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">en</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">acquirerAmount</span><span class="dl">"</span><span class="p">:</span><span class="mf">16.7</span><span class="p">,</span><span class="dl">"</span><span class="s2">acquirerCurrency</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">EUR</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">paymentSolutionDetails</span><span class="dl">"</span><span class="p">:{</span><span class="err">“</span><span class="nx">authCode</span><span class="err">”</span><span class="p">:</span><span class="dl">"</span><span class="s2">1234</span><span class="dl">"</span><span class="p">},</span><span class="err">”</span><span class="nx">status</span><span class="err">”</span><span class="p">:</span><span class="err">”</span><span class="nx">NOT_SET_FOR_CAPTURE</span><span class="err">”</span><span class="p">}</span>
+</code></pre></div></div>
+
+								
+						
+			</section>
+			
+					<section class="right-code">
+						
+								
+
+
+<div title="Redirection" class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="s2">"redirection"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"merchantId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"111111"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"merchantTxId"</span><span class="p">:</span><span class="s2">"abc123"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"txId"</span><span class="p">:</span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"redirectionUrl"</span><span class="p">:</span><span class="s2">"https://mpi.bank.com/123123123-abc-123123123"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+						
+								
+
+
+<div title="Error" class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failure"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"resultId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7433a8d6-caea-40e6-a6eb-90c11dad61b"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"additionalDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="nl">"messageCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"field.nonempty"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"fieldName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"action"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"processingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+						
+				</section>
+			
+		</section>
+	
+		<section class="doc-content">
+			<section class="left-docs">
+				<h3>
+					<a id="apihostedPaymentPage">
+						Hosted Payment Page
+						
+							<span class="endpoint post"></span>
+						
+					</a>
+					<a class="editor-link" href="cloudcannon:collections/_api/hostedPaymentPage.md">Edit</a>
+				</h3>
+				
+					<p class="description">The purpose of this document is to describe the AUTH/PURCHASE/VERIFY (Hosted Payment Page Integration) API Operation to enable merchant developers to integrate their webpages with the IPG Gateway.  Refer to the IPG Gateway – 0 – Overview document for how this API Operation is used in the merchant processes.. The AUTH/PURCHASE/VERIFY (Hosted Payment Page Integration) API Operation allows the merchant using the Hosted Payment Page or Shopping Cart Plugins Integration Method to send customer authorise and purchase payment card transactions, or payment card details for verification through the IPG Gateway.</p>
+				
+
+				
+						<h6>Parameters</h6>
+						<dl>
+								
+										<dt>merchantId</dt>
+										<dt1>Integer(18)</dt1>
+										<dt2>mandatory</dt2>
+										<dd>The identifier for the merchant in the IPG Gateway provided at on-boarding.  This must be the same used in the related session token request.</dd>
+										
+								
+										<dt>password</dt>
+										<dt1>String (64)</dt1>
+										<dt2>mandatory</dt2>
+										<dd>The merchant’s password in the IPG Gatewayprovided at on-boarding</dd>
+										
+								
+										<dt>action</dt>
+										<dt1>String(enum)</dt1>
+										<dt2>mandatory</dt2>
+										<dd>Must be “AUTH”, “PURCHASE” or “VERIFY”For EVO Mexico/Banamex eGlobal Installments Plans this mustbe “AUTH” or “PURCHASE”; plans cannot be initiated from a “VERIFY” operatio</dd>
+										
+								
+										<dt>timestamp</dt>
+										<dt1>Integer (13)</dt1>
+										<dt2>mandatory</dt2>
+										<dd>Milliseconds since 1970-01-01 00:00:00</dd>
+										
+								
+										<dt>allowOriginUrl</dt>
+										<dt1>String (253)</dt1>
+										<dt2>mandatory</dt2>
+										<dd>The merchant's URLthat will make the Auth/Purchase/VerifyRequest(see Section Auth/Purchase/Verify Request) Cross-Origin Resource Sharing (CORS)headers will allow only this origin</dd>
+										
+								
+										<dt>quickSale</dt>
+										<dt1>Boolean</dt1>
+										<dt2>optional</dt2>
+										<dd>A flag to indicate if a quick sale was performed where no customer information was taken.If set to TRUE:AcustomerIdwill be generated by the IPG GatewaydatabaseThecustomerAddressPostalCodeand customerAddressCountryfields should be completed for the AVS checks on the payment cardThe other‘customer’ and ‘payer’ parameters should not be supplied and willbe ignoredThe customer name in the IPG Gatewaydatabasewill be set to ‘Quick Sale’ –this will bethe indicator in the Back-Office/Virtual Terminal transactions tablesIf set to FALSE or omitted, customer information should be supplied in the ‘customer’ and ‘payer’ prefixed parameters.  Anew customer record will be created in the IPG Gatewaydatabase using thecustomerId</dd>
+										
+								
+										<dt>customerId</dt>
+										<dt1>String (20)</dt1>
+										<dt2>conditional</dt2>
+										<dd>Customer identifier in the merchant system,or the value generated by the IPG Gatewayin the TOKENIZE API Operation(see IPG Gateway–1 –TOKENIZE).This mustbe the value supplied in or by the TOKENIZE API Operation.  The value is used to validate that the payment card token is for the correct customer.If the customerIdvalue is not the same held against the payment card token in the IPG Gatewaydatabase a Session Token Response –Not Processed(section 1.3) is returned.Mandatory for payment cards methodMust not be supplied if quickSale= TRUEOptional for alternative payment methodsIf the parameter is omitted or no value is providedfor a first time use of the payment card, the IPG Gatewaywill generate a value, which will be stored internally against the payment card token and returned in the Auth/Purchase/VerifyResponse –Processed(section ...)</dd>
+										
+								
+										<dt>firstTimeTransaction</dt>
+										<dt1>Boolean</dt1>
+										<dt2>optional</dt2>
+										<dd>A  flag to indicate if the transaction is the customer’s first. For some merchant configurations, this forces 3D Secure processing. Note - if a customerIdvalue is not provided, the IPG Gatewaywill always treat the transaction as a first-time transaction for the customer.</dd>
+										
+								
+										<dt>merchantTxId</dt>
+										<dt1>String (50)</dt1>
+										<dt2>optional</dt2>
+										<dd>The merchant’s reference for the transactionIf the parameter is empty or omitted, a transaction id will be generated by the IPG Gatewayas a hexadecimalstring, and returned in the Redirection Response and Auth/Purchase/Verify Response - Processed</dd>
+										
+								
+										<dt>freeText</dt>
+										<dt1>String (200)</dt1>
+										<dt2>optional</dt2>
+										<dd>A free text field for use by the merchant that is returned in the Transaction Result Call (see IPG Gateway -6 -TRANSACTION RESULT CALL: TRANSACTIONS DESCRIPTION</dd>
+										
+								
+										<dt>operatorId</dt>
+										<dt1>String (20)</dt1>
+										<dt2>optional</dt2>
+										<dd>Identifier of the merchant’s operator or agent on behalf of the end customer, if the operation is not performed by the merchant, and the merchant wants to track the operator who performed the transaction</dd>
+										
+								
+										<dt>brandId</dt>
+										<dt1>Integer (18)</dt1>
+										<dt2>optional</dt2>
+										<dd>The IPG GatewayBrand Id for the merchant’s goods or services supplied at on-boardingIf not provided the merchant’s default IPG GatewayBrand Id will be used</dd>
+										
+								
+										<dt>channel</dt>
+										<dt1>String (enum)</dt1>
+										<dt2>mandatory</dt2>
+										<dd>The transaction channel through which the payment was taken:“ECOM”for card present e-commerce type transactions that are customer initiated, usually through a website checkout screen“MOTO”for card not present transactions that are merchant initiated, usually through a virtual terminal type application developed by the merchant</dd>
+										
+								
+										<dt>userDevice</dt>
+										<dt1>String (enum)</dt1>
+										<dt2>optional</dt2>
+										<dd>Type of device used, accepted values “MOBILE”“DESKTOP”“UNKNOWN” (default value if no value provided)</dd>
+										
+								
+										<dt>userAgent</dt>
+										<dt1>String (1024)</dt1>
+										<dt2>optional</dt2>
+										<dd>The user agent of the browser from which the transaction was performed, for merchant tracking if required</dd>
+										
+								
+										<dt>amount</dt>
+										<dt1>BigDecimal(15.2 or 15.3)</dt1>
+										<dt2>optional</dt2>
+										<dd>The total transaction amount, including tax, shipping,surcharge and discount amountsIf action= “AUTH” or “PURCHASE”, if a value is supplied this must be > 0.00If action= “VERIFY”, this must be 0.00 or omitted See Appendix A - UAT Trigger Values</dd>
+										
+								
+										<dt>taxAmount</dt>
+										<dt1>BigDecimal(15.2 or 15.3)</dt1>
+										<dt2>optional</dt2>
+										<dd>Tax amountas a currency value (not percentage) If action= “VERIFY”, this must be 0.00 or omitted</dd>
+										
+								
+										<dt>shippingAmount</dt>
+										<dt1>BigDecimal(15.2 or 15.3)</dt1>
+										<dt2>optional</dt2>
+										<dd>Shipping amount If action= “VERIFY”, this must be 0.00 or omitted</dd>
+										
+								
+										<dt>chargeAmount</dt>
+										<dt1>BigDecimal(15.2 or 15.3)</dt1>
+										<dt2>optional</dt2>
+										<dd>Surcharge amount If action= “VERIFY”, this must be 0.00 or omitted</dd>
+										
+								
+										<dt>discountAmount</dt>
+										<dt1>BigDecimal(15.2 or 15.3)</dt1>
+										<dt2>optional</dt2>
+										<dd>Discount amount If action= “VERIFY”, this must be 0.00 or omitted</dd>
+										
+								
+										<dt>currency</dt>
+										<dt1>String (enum)</dt1>
+										<dt2>mandatory</dt2>
+										<dd>The ISO alpha-3 code for the currency as defined in the ISO 4217 standard</dd>
+										
+								
+										<dt>country</dt>
+										<dt1>String (enum)</dt1>
+										<dt2>mandatory</dt2>
+										<dd>The ISO alpha-2 code country in which the transaction takes place, as defined in the ISO 3166 standardIf this is not known or unavailable, the customerAddressCountrywill be used.</dd>
+										
+								
+										<dt>paymentSolutionId</dt>
+										<dt1>Integer(18)</dt1>
+										<dt2>optional</dt2>
+										<dd>The IPG GatewayPayment Solution IdentifierSee IPG Gateway–7 –GET AVAILABLE PAYMENT SOLUTIONSfor valid values</dd>
+										
+								
+										<dt>language</dt>
+										<dt1>String(enum)</dt1>
+										<dt2>optional</dt2>
+										<dd>{"not used by Direct API Integration merchants –used by the Hosted Payment Page integration to determine the language for the hosted payment page"=>nil}</dd>
+										
+								
+										<dt>s_text1, s_text2... s_text5</dt>
+										<dt1>String(200)</dt1>
+										<dt2>optional</dt2>
+										<dd>5 Text fields for general use</dd>
+										
+								
+										<dt>d_date1, d_date2... d_date5</dt>
+										<dt1>Date/Time</dt1>
+										<dt2>optional</dt2>
+										<dd>5 Date fields for general use.Format - DD/MM/YYYY hh:mm:ss–the time part can be omitted, resulting in 00:00:00</dd>
+										
+								
+										<dt>b_bool1, b_bool2... b_bool5</dt>
+										<dt1>Boolean</dt1>
+										<dt2>optional</dt2>
+										<dd>5 Boolean fields for general use–accepted values are "true" and "false"</dd>
+										
+								
+										<dt>n_num1, n_num2... n_num5</dt>
+										<dt1>BigDecimal(7.2)</dt1>
+										<dt2>optional</dt2>
+										<dd>5 Numeric fields for general use–a dot “.” must be used as a decimal separator,not the comma "," and athousand separatormust not be used</dd>
+										
+								
+										<dt>merchantNotificationUrl</dt>
+										<dt1>String(200)</dt1>
+										<dt2>mandatory</dt2>
+										<dd>The merchant’s server-to-server communications URL,to which the Transaction Result Call will be sentSee IPG Gateway –3–TRANSACTION RESULT CALLdocument</dd>
+										
+								
+										<dt>merchantLandingPageUrl</dt>
+										<dt1>String(200)</dt1>
+										<dt2>optional</dt2>
+										<dd>The URL to which the customer’s browser is redirected for success or failure messaging</dd>
+										
+								
+										<dt>merchantLandingPageRedirectMethod</dt>
+										<dt1>String(enum)</dt1>
+										<dt2>optional</dt2>
+										<dd>Determines the methodby which the customeris redirected to merchantLandingPage. Permitted Values‘POST’, ‘GET’ If the parameter is not included, the API process defaults to POST If the parameter is included and is ‘POST’, the API process uses POST If the parameter is included and is ‘GET’, the API process uses GET  If the parameter isincluded and is empty/blank, aSession Token Response –Not Processed(section 1.3) with an error</dd>
+										
+								
+										<dt>customerDocumentType</dt>
+										<dt1>String(enum)</dt1>
+										<dt2>optional</dt2>
+										<dd>Type of document used to confirm the customer’s identification. IPG Gatewayaccepted values- PASSPORTNATIONAL_ID DRIVING_LICENSE UNIQUE_TAXPAYER_REFERENCE OTHER</dd>
+										
+								
+										<dt>customerDocumentNumber</dt>
+										<dt1>String(30)</dt1>
+										<dt2>conditional</dt2>
+										<dd>Customer document number Condition - Mandatory if customerDocumentTypeprovide</dd>
+										
+								
+										<dt>customerDocumentState</dt>
+										<dt1>String(2)</dt1>
+										<dt2>conditional</dt2>
+										<dd>For EVOUS Sales Channel Merchants, the alpha-2 code for the State that issued the Driver’s Licence.Condition - Mandatory if merchant Sales Channel is ‘EVOUS’ and customerDocumentType= ‘DRIVING_LICENSE’ and if country= ‘US’alpha-2 code for the US State that issued the licence –see Section B.1 ‘CA’alpha-2 code for the Canadian State that issued the licence –see Section B.2 ‘MX’alpha-2 code for the Mexican State that issued the licence –see Section B.3 Elseset to NULL</dd>
+										
+								
+										<dt>merchantReference</dt>
+										<dt1>String(200)</dt1>
+										<dt2>optional</dt2>
+										<dd>The merchant’s reference for the customer</dd>
+										
+								
+										<dt>customerFirstName</dt>
+										<dt1>String(50)</dt1>
+										<dt2>optional</dt2>
+										<dd>The merchant’s reference for the customer</dd>
+										
+								
+										<dt>customerLastName</dt>
+										<dt1>String(100)</dt1>
+										<dt2>optional</dt2>
+										<dd>Last name, surname or family name of the customer</dd>
+										
+								
+										<dt>customerSex</dt>
+										<dt1>String(enum)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer Sex - M (male) F (female)</dd>
+										
+								
+										<dt>customerDateOfBirth</dt>
+										<dt1>Date</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer date of birth –format DD/MM/YYYY</dd>
+										
+								
+										<dt>customerRegistrationDate</dt>
+										<dt1>Date</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer registration date on merchant’s site – format DD/MM/YYYYNote - this is used for reporting and in some risk tools where required</dd>
+										
+								
+										<dt>customerEmail</dt>
+										<dt1>String(60)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer email address</dd>
+										
+								
+										<dt>customerPhone</dt>
+										<dt1>String(100)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer phone number</dd>
+										
+								
+										<dt>customerIPAddress</dt>
+										<dt1>String(39)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer IP address from where purchase is made. Only IPv4 supported</dd>
+										
+								
+										<dt>customerAddressHouseName</dt>
+										<dt1>String(50)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer address house name</dd>
+										
+								
+										<dt>customerAddressHouseNumber</dt>
+										<dt1>String(5)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer address house number</dd>
+										
+								
+										<dt>customerAddressFlat</dt>
+										<dt1>String(5)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer address flat</dd>
+										
+								
+										<dt>customerAddressStreet</dt>
+										<dt1>String(50)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer address streetThe customer’s street should be supplied whenever possible as it is used with the customerAddressPostalCodevalue for AVS (Address Verification System) Checks, and so reduce the possibility of a payment decline</dd>
+										
+								
+										<dt>customerAddressCity</dt>
+										<dt1>String(50)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer address city</dd>
+										
+								
+										<dt>customerAddressDistrict</dt>
+										<dt1>String(50)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer address district</dd>
+										
+								
+										<dt>customerAddressPostalCode</dt>
+										<dt1>String(30)</dt1>
+										<dt2>conditional</dt2>
+										<dd>Customer address postal codeCondition - If quickSale= TRUE, customerAddressPostalCodeis mandatoryThe customer’s postal code (postcode/ZIP Code) should be supplied whenever possible as it is used with the customerAddressStreetvalue for AVS (Address Verification System) Checks, and so reduce the possibility of a payment decline</dd>
+										
+								
+										<dt>customerAddressCountry</dt>
+										<dt1>String(enum)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer address countryThe ISO alpha-2 code as defined in the ISO 3166 standard. Note - this will be used if country field is not supplied</dd>
+										
+								
+										<dt>customerAddressState</dt>
+										<dt1>String(40)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer address state, county or province</dd>
+										
+								
+										<dt>customerAddressPhone</dt>
+										<dt1>String(100)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer address phone</dd>
+										
+								
+										<dt>customerShippingAddressHouseName</dt>
+										<dt1>String(50)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer shipping address house name</dd>
+										
+								
+										<dt>customerShippingAddressHouseNumber</dt>
+										<dt1>String(5)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer shipping address house number</dd>
+										
+								
+										<dt>customerShippingAddressFlat</dt>
+										<dt1>String(5)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer shipping address flat</dd>
+										
+								
+										<dt>customerShippingAddressStreet</dt>
+										<dt1>String(50)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer shipping address street</dd>
+										
+								
+										<dt>customerShippingAddressCity</dt>
+										<dt1>String(50)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer shipping address city</dd>
+										
+								
+										<dt>customerShippingAddressDistrict</dt>
+										<dt1>String(50)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer shipping address district</dd>
+										
+								
+										<dt>customerShippingAddressPostalCode</dt>
+										<dt1>String(30)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer shipping address postal code</dd>
+										
+								
+										<dt>customerShippingAddressCountry</dt>
+										<dt1>String(enum)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer shipping address countryThe ISO alpha-2 code as defined in the ISO 3166 standard</dd>
+										
+								
+										<dt>customerShippingAddressState</dt>
+										<dt1>String(40)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer shipping address state, county or province</dd>
+										
+								
+										<dt>customerShippingAddressPhone</dt>
+										<dt1>String(100)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer shipping address phone</dd>
+										
+								
+										<dt>customerBillingAddressHouseName</dt>
+										<dt1>String(50)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer billing address house name</dd>
+										
+								
+										<dt>customerBillingAddressHouseNumber</dt>
+										<dt1>String(5)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer billing address house number</dd>
+										
+								
+										<dt>customerBillingAddressFlat</dt>
+										<dt1>String(5)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer billing address flat</dd>
+										
+								
+										<dt>customerBillingAddressStreet</dt>
+										<dt1>String(50)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer billing address street</dd>
+										
+								
+										<dt>customerBillingAddressCity</dt>
+										<dt1>String(50)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer billing address city</dd>
+										
+								
+										<dt>customerBillingAddressDisctrict</dt>
+										<dt1>String(50)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer billing address district</dd>
+										
+								
+										<dt>customerBillingAddressPostalCode</dt>
+										<dt1>String(30)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer billing address postal code</dd>
+										
+								
+										<dt>customerBillingAddressCountry</dt>
+										<dt1>String(enum)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer billing address countryThe ISO alpha-2 code as defined in the ISO 3166 standard</dd>
+										
+								
+										<dt>customerBillingAddressState</dt>
+										<dt1>String(40)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer billing address state</dd>
+										
+								
+										<dt>customerBillingAddressPhone</dt>
+										<dt1>String(100)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer billing address phone</dd>
+										
+								
+										<dt>payerFirstName</dt>
+										<dt1>String(50)</dt1>
+										<dt2>optional</dt2>
+										<dd>Payer first name, if the Payee is different to the CustomerRequired by some regions and payment services, e.g. PayU Latam in Brazil</dd>
+										
+								
+										<dt>payerLastName</dt>
+										<dt1>String(100)</dt1>
+										<dt2>optional</dt2>
+										<dd>Payer last name, if the Payee is different to the CustomerRequired by some regions and payment services, e.g. PayU Latam in Brazil</dd>
+										
+								
+										<dt>payerEmail</dt>
+										<dt1>String(60)</dt1>
+										<dt2>optional</dt2>
+										<dd>Payer email, if the Payee is different to the CustomerRequired by some regions and payment services, e.g. PayU Latam in Brazil</dd>
+										
+								
+										<dt>payerDateOfBirth</dt>
+										<dt1>Date</dt1>
+										<dt2>optional</dt2>
+										<dd>Payer date of birth, if the Payee is different to the CustomerRequired by some regions and payment services, e.g. PayU Latam in Brazil</dd>
+										
+								
+										<dt>payerPhone</dt>
+										<dt1>String(100)</dt1>
+										<dt2>optional</dt2>
+										<dd>Payer phone, if the Payee is different to the CustomerRequired by some regions and payment services, e.g. PayU Latam in Brazil</dd>
+										
+								
+										<dt>payerDocumentType</dt>
+										<dt1>String(enum)</dt1>
+										<dt2>optional</dt2>
+										<dd>Type of document used to confirm the payer’s identification, if the Payee is different to the CustomerIPG Gatewayaccepted values - PASSPORT NATIONAL_ID DRIVING_LICENSE UTR OTHER. Required by some regions and payment services, e.g. PayU Latam in Brazil</dd>
+										
+								
+										<dt>payerDocumentNumber</dt>
+										<dt1>String(30)</dt1>
+										<dt2>conditional</dt2>
+										<dd>Payer document number, if the Payee is different to the CustomerCondition - Mandatory if payerDocumentTypeprovidedRequired by some regions and payment services, e.g. PayU Latam in Brazil</dd>
+										
+								
+										<dt>payerCustomerId</dt>
+										<dt1>String(20)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer identifier of the payee in the merchant’s systemRequired by some regions and payment services, e.g. PayU Latam in Brazil, if the payee is also a customer of the merchant</dd>
+										
+								
+										<dt>forceSecurePayment</dt>
+										<dt1>Boolean</dt1>
+										<dt2>optional</dt2>
+										<dd>For payment card transactionsonly, if the merchant has 3D Secure disabled for all transactions as a rule, this field can be used to force 3d Secure processing for individual transactions- If True - forces 3DSecure processing no matter the routing rules If False, not provided or NULL - the 3D Secure routing rules in the IPG Gatewayare usedIf 3D Secure processing is required, the Redirection Response is sent</dd>
+										
+								
+										<dt>processUnknownSecurePayment</dt>
+										<dt1>Boolean</dt1>
+										<dt2>optional</dt2>
+										<dd>For payment card transactions, this determines how "U" (Unknown) responses from the 3D Secure process are managed:If True and blockU is True:the transaction will be stopped in the IPG Gatewayand a Session Token Response –Not Processed(section 1.3) is returned</dd>
+										
+								
+										<dt>specinCreditCardToken</dt>
+										<dt1>String(100)</dt1>
+										<dt2>optional</dt2>
+										<dd>The payment card token received in the TOKENIZE API Operation, see IPG Gateway –1 –TOKENIZE For OneClick transactions this mustbe the data.oneClickPaymentMethods.payToken returned in the Get OneClick Payment Methods Response –Processed</dd>
+										
+								
+										<dt>specinProcessWithoutCvv2</dt>
+										<dt1>Boolean</dt1>
+										<dt2>optional</dt2>
+										<dd>A flag that indicates whether the payment card transaction is to be processed with or without the Card Security Code (CSC also called Card Verification Data [CVD], Card Verification Number, Card Verification Value [CVV], Card Verification Value Code, Card Verification Code [CVC], Verification Code [V-code or V code], or Signature Panel Code [SPC])This requires prior authorization by the IPG Gatewayand acquirer.</dd>
+										
+								
+										<dt>bankMid</dt>
+										<dt1>String(50)</dt1>
+										<dt2>optional</dt2>
+										<dd>The merchant’s Bank MID with the Acquirer.Used by the merchant to control which acquirer bank MID will be used for the transaction.</dd>
+										
+								
+										<dt>storeCard</dt>
+										<dt1>Boolean</dt1>
+										<dt2>optional</dt2>
+										<dd>Determines how the payment card data is stored in the IPG Gateway.  Payment card data is always stored in the IPG Gatewayfor legislative and regulatorypurposes.This flag determines if the card remains active for use in the IPG Gateway - If False the payment card is set to inactive If True or Missing the payment card is set to active</dd>
+										
+								
+										<dt>limitMin</dt>
+										<dt1>BigDecimal(15.2 or 15.3)</dt1>
+										<dt2>optional</dt2>
+										<dd>Sets a minimum transaction value allowed to be processed in the IPG GatewayThis overrides the minimum value set in the IPG Gatewaymerchant configurationIt is the merchant’s responsibility to set a value that will be accepted by the Acquirer and Issuer involved in the transaction process</dd>
+										
+								
+										<dt>limitMax</dt>
+										<dt1>BigDecimal(15.2 or 15.3)</dt1>
+										<dt2>optional</dt2>
+										<dd>Sets a maximum transaction value allowed to be processed in the IPG GatewayThis overrides the maximum value set in the IPG Gateway merchant configuration. It is the merchant’s responsibility to set a value that will be accepted by the Acquirer and Issuer involved in the transaction process</dd>
+										
+								
+						</dl>
+				
+
+				
+
+
+				
+						
+								
+
+
+<div title="jQuery" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span> <span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://apiuat.test.boipapaymentgateway.com/payment?</span><span class="dl">"</span><span class="o">&gt;</span> <span class="p">{</span>
+<span class="nx">merchantId</span><span class="o">=</span><span class="mi">1111111</span><span class="o">&amp;</span><span class="nx">password</span><span class="o">=</span><span class="nx">klw74U6yt40mNo</span><span class="o">&amp;</span><span class="nx">merchantTxId</span><span class="o">=</span><span class="nx">XYZ123456789ABC</span><span class="o">&amp;</span><span class="nx">allowOriginUrl</span><span class="o">=</span><span class="nx">www</span><span class="p">.</span><span class="nx">merchantsite</span><span class="p">.</span><span class="nx">com</span><span class="o">&amp;</span><span class="nx">action</span><span class="o">=</span><span class="nx">AUTH</span><span class="o">&amp;</span><span class="nx">timestamp</span><span class="o">=</span><span class="mi">1249751864238</span><span class="o">&amp;</span><span class="nx">customerId</span><span class="o">=</span><span class="nx">ABD123</span><span class="o">&amp;</span><span class="nx">operatorId</span><span class="o">=</span><span class="nx">brian01</span><span class="o">&amp;</span><span class="nx">brandId</span><span class="o">=</span><span class="mi">987654321</span><span class="o">&amp;</span><span class="nx">channel</span><span class="o">=</span><span class="nx">ECOM</span><span class="o">&amp;</span><span class="nx">userDevice</span><span class="o">=</span><span class="nx">DESKTOP</span><span class="o">&amp;</span><span class="nx">amount</span><span class="o">=</span><span class="mi">120</span><span class="o">&amp;</span><span class="nx">taxAmount</span><span class="o">=</span><span class="mi">10</span><span class="o">&amp;</span><span class="nx">shippingAmount</span><span class="o">=</span><span class="mi">15</span><span class="o">&amp;</span><span class="nx">chargeAmount</span><span class="o">=</span><span class="mi">5</span><span class="o">&amp;</span><span class="nx">discountAmount</span><span class="o">=</span><span class="mi">10</span><span class="o">&amp;</span><span class="nx">currency</span><span class="o">=</span><span class="nx">GBP</span><span class="o">&amp;</span><span class="nx">country</span><span class="o">=</span><span class="nx">GB</span><span class="o">&amp;</span><span class="nx">paymentSolutionId</span><span class="o">=</span><span class="mi">500</span><span class="o">&amp;</span><span class="nx">language</span><span class="o">=</span><span class="nx">en</span><span class="o">&amp;</span><span class="nx">merchantNotificationUrl</span><span class="o">=</span><span class="nx">www</span><span class="p">.</span><span class="nx">merchantsite</span><span class="p">.</span><span class="nx">com</span><span class="o">&amp;</span><span class="nx">merchantLandingPageUrl</span><span class="o">=</span><span class="nx">www</span><span class="p">.</span><span class="nx">merchant</span><span class="p">.</span><span class="nx">com</span><span class="o">&amp;</span><span class="nx">firstTimeTransaction</span><span class="o">=</span><span class="nx">Y</span><span class="o">&amp;</span><span class="nx">customerDocumentType</span><span class="o">=</span><span class="nx">PASSPORT</span><span class="o">&amp;</span><span class="nx">customerDocumentNumber</span><span class="o">=</span><span class="mi">12345678</span><span class="o">&amp;</span><span class="nx">merchantReference</span><span class="o">=</span><span class="nx">ABC123546</span><span class="o">&amp;</span><span class="nx">customerFirstName</span><span class="o">=</span><span class="nx">John</span><span class="o">&amp;</span><span class="nx">customerLastName</span><span class="o">=</span><span class="nx">Smith</span><span class="o">&amp;</span><span class="nx">customerSex</span><span class="o">=</span><span class="nx">M</span><span class="o">&amp;</span><span class="nx">customerDateOfBirth0</span><span class="o">=</span><span class="mi">01</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">1999</span><span class="o">&amp;</span><span class="nx">customerRegistrationDate</span><span class="o">=</span><span class="mi">01</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">2017</span><span class="o">&amp;</span><span class="nx">customerEmail</span><span class="o">=</span><span class="nx">john</span><span class="p">.</span><span class="nx">smith</span><span class="p">@</span><span class="nd">email</span><span class="p">.</span><span class="nx">com</span><span class="o">&amp;</span><span class="nx">customerPhone</span><span class="o">=</span><span class="mi">079525551234</span><span class="o">&amp;</span><span class="nx">customerIPAddress</span><span class="o">=</span><span class="mf">111.111</span><span class="p">.</span><span class="mf">111.111</span><span class="o">&amp;</span><span class="nx">customerAddressHouseName</span><span class="o">=</span><span class="nx">House</span><span class="o">+</span><span class="nx">Name</span><span class="o">&amp;</span><span class="nx">customerAddressHouseNumber</span><span class="o">=</span><span class="mi">1</span><span class="o">&amp;</span><span class="nx">customerAddressFlat</span><span class="o">=</span><span class="mi">3</span><span class="o">&amp;</span><span class="nx">customerAddressStreet</span><span class="o">=</span><span class="nx">Street</span><span class="o">+</span><span class="nx">Name</span><span class="o">&amp;</span><span class="nx">customerAddressCity</span><span class="o">=</span><span class="nx">London</span><span class="o">&amp;</span><span class="nx">customerAddressDistrict</span><span class="o">=</span><span class="nx">Mayfair</span><span class="o">&amp;</span><span class="nx">customerAddressPostalCode</span><span class="o">=</span><span class="nx">W1A</span><span class="o">+</span><span class="nx">A11</span><span class="o">&amp;</span><span class="nx">customerAddressCountry</span><span class="o">=</span><span class="nx">United</span><span class="o">+</span><span class="nx">Kingdom</span><span class="o">&amp;</span><span class="nx">customerAddressState</span><span class="o">=</span><span class="nx">London</span><span class="o">&amp;</span><span class="nx">customerAddressPhone</span><span class="o">=</span><span class="mi">00442025551234</span><span class="o">&amp;</span><span class="nx">forceSecurePayment</span><span class="o">=</span><span class="nx">True</span><span class="o">&amp;</span><span class="nx">processUnknownSecurePayment</span><span class="o">=</span><span class="nx">True</span><span class="o">&amp;</span><span class="nx">specinCreditCardToken</span><span class="o">=</span><span class="mi">45</span><span class="nx">ae201ghy23498FjMj701</span><span class="o">&amp;</span><span class="nx">specinProcessWithoutCvv2</span><span class="o">=</span><span class="nx">False</span><span class="o">&amp;</span><span class="nx">bankMid</span><span class="o">=</span><span class="mi">01000320</span><span class="nx">_MOTO</span><span class="o">+</span><span class="nx">EUR</span><span class="o">+</span><span class="nx">Test</span><span class="o">+</span><span class="nx">Bank</span><span class="o">+</span><span class="nx">MID</span><span class="o">&amp;</span><span class="nx">storeCard</span><span class="o">=</span><span class="nx">False</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+								
+						
+			</section>
+			
+					<section class="right-code">
+						
+								
+
+
+<div title="Success" class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"resultId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f52cc38a-7815-4f8c-8687-662cc63d56e9"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"merchantId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1111111"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"additionalDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nl">"processingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"96b7d82e-349f-4880-9b8a-928636437c75"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+						
+								
+
+
+<div title="Error" class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failure"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"resultId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bb248d1d-d657-4dbe-9f04-a279b384872c"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"additionalDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> 
+  </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"messageCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This field is required in [REQUEST]"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fieldName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"password"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+</span><span class="nl">"processingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+						
+				</section>
+			
+		</section>
+	
+		<section class="doc-content">
+			<section class="left-docs">
+				<h3>
+					<a id="apipaymentFormBrandingAndLocalization">
+						Payment Form Branding & Localisation
+						
+							<span class="endpoint post"></span>
+						
+					</a>
+					<a class="editor-link" href="cloudcannon:collections/_api/paymentFormBrandingAndLocalization.md">Edit</a>
+				</h3>
+				
+					<p class="description">However, the Hosted Payment Form is loaded, it is possible to customise the Hosted Payment Form to match the design and branding of the merchant’s webpage. The merchant must provide the IPG Gateway with the CSS and image files.  Sample files can be supplied on request.  The customised CSS file must be delivered to the IPG Gateway Support Team for review and sign off to ensure code integrity and security.  The files will be loaded to the merchant’s configuration in the IPG Gateway.</p>
+				
+
+				
+
+				
+
+
+				
+			</section>
+			
+		</section>
+	
+		<section class="doc-content">
+			<section class="left-docs">
+				<h3>
+					<a id="apirefund">
+						Refund Session token request
+						
+							<span class="endpoint post"></span>
+						
+					</a>
+					<a class="editor-link" href="cloudcannon:collections/_api/refund.md">Edit</a>
+				</h3>
+				
+					<p class="description">The purpose of this document is to describe the REFUND API Operation to enable merchant developers to integrate their webpages with the IPG Gateway.  Refer to the IPG Gateway – 0 – Overview document for how this API Operation is used in the merchant processes. The IPG Gateway caters for full or partial refunds. More than one refund can be performed on a single transaction.  However, the refund amounts cannot exceed the original transaction amount. Refunds can only be performed on transactions with the status of CAPTURED.</p>
+				
+
+				
+						<h6>Parameters</h6>
+						<dl>
+								
+										<dt>merchantId</dt>
+										<dt1>Integer(18)</dt1>
+										<dt2>mandatory</dt2>
+										<dd>The identifier for the merchant in the IPG Gateway provided at on-boarding.  This must be the same used in the related session token request.</dd>
+										
+								
+										<dt>password</dt>
+										<dt1>String (64)</dt1>
+										<dt2>mandatory</dt2>
+										<dd>The merchant’s password in the IPG Gatewayprovided at on-boarding</dd>
+										
+								
+										<dt>action</dt>
+										<dt1>String(enum)</dt1>
+										<dt2>mandatory</dt2>
+										<dd>Must be “REFUND”</dd>
+										
+								
+										<dt>timestamp</dt>
+										<dt1>Integer (18)</dt1>
+										<dt2>mandatory</dt2>
+										<dd>Milliseconds since 1970-01-01 00:00:00</dd>
+										
+								
+										<dt>allowOriginUrl</dt>
+										<dt1>String (253)</dt1>
+										<dt2>mandatory</dt2>
+										<dd>The merchant's URLthat will make the Auth/Purchase/VerifyRequest(see Section Auth/Purchase/Verify Request) Cross-Origin Resource Sharing (CORS)headers will allow only this origin</dd>
+										
+								
+										<dt>originalTxId</dt>
+										<dt1>Integer (18)</dt1>
+										<dt2>optional</dt2>
+										<dd>The IPG Gateway transaction Id of the transaction to be refunded. This will have been returned in the txId field of the Auth/Purchase Response – Processed (see IPG Gateway – 2 – AUTH-PURCHASE-VERIFY – Direct API or IPG Gateway – 2 – AUTH-PURCHASE-VERIFY – Hosted Payment Page, as appropriate to the integration method)</dd>
+										
+								
+										<dt>originalMerchantTxId</dt>
+										<dt1>String (50)</dt1>
+										<dt2>mandatory</dt2>
+										<dd>The merchant’s original transaction identifier of the transaction to be refunded, that was provided in the merchantTxId field of the Auth/Purchase Session Token Request and Auth/Purchase Request (see IPG Gateway – 2 – AUTH-PURCHASE-VERIFY – Direct API or IPG Gateway – 2 – AUTH-PURCHASE-VERIFY – Hosted Payment Page, as appropriate to the integration method)</dd>
+										
+								
+										<dt>agentId</dt>
+										<dt1>String (18)</dt1>
+										<dt2>optional</dt2>
+										<dd>Identifier of the merchant’s operator or agent on behalf of the end customer, if the operation is not performed by the merchant, and the merchant wants to track the operator who performed the transaction. Note - this is not the same as the operatorId or userAgent fields of the Auth/Purchase Session Token Request and Auth/Purchase/Verify Request (see IPG Gateway – 2 – AUTH-PURCHASE-VERIFY – Direct API or IPG Gateway – 2 – AUTH-PURCHASE-VERIFY – Hosted Payment Page, as appropriate to the integration method)</dd>
+										
+								
+										<dt>amount</dt>
+										<dt1>BigDecimal (10.2 or 10.3) BigDecimal (15.2 or 15.3</dt1>
+										<dt2>mandatory</dt2>
+										<dd>The amount to refund. Can be less than or equal to the original transaction amount. Cannot be more than the original transaction amount</dd>
+										
+								
+										<dt>partialRefundComment</dt>
+										<dt1>String (500)</dt1>
+										<dt2>optional</dt2>
+										<dd>Free text field that allows a comments to be attached to the transaction record in the IPG Gateway</dd>
+										
+								
+						</dl>
+				
+
+				
+
+
+				
+						
+								
+
+
+<div title="jQuery" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span> <span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://apiuat.test.boipapaymentgateway.com/payment?</span><span class="dl">"</span><span class="o">&gt;</span> <span class="p">{</span>
+<span class="nx">action</span><span class="o">=</span><span class="nx">REFUND</span><span class="o">&amp;</span><span class="nx">merchantId</span><span class="o">=</span><span class="mi">167738</span><span class="o">&amp;</span><span class="nx">password</span><span class="o">=</span><span class="nx">WcuQNsptvvd2ftu5MMhU</span><span class="o">&amp;</span><span class="nx">originalMerchantTxId</span><span class="o">=</span><span class="mi">84</span><span class="nx">Yf5iO28qFr3og8rWTo</span><span class="o">&amp;</span><span class="nx">amount</span><span class="o">=</span><span class="mi">20</span><span class="o">&amp;</span><span class="nx">timestamp</span><span class="o">=</span><span class="mi">1555494136820</span><span class="o">&amp;</span><span class="nx">allowOriginUrl</span><span class="o">=</span><span class="na">http</span><span class="p">:</span><span class="c1">//localhost:8083&amp;originalTxId=11622150</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+								
+						
+			</section>
+			
+					<section class="right-code">
+						
+								
+
+
+<div title="Response" class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"resultId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"85034083-22dd-49ff-9906-495098c42501"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"merchantId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"167738"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"additionalDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nl">"cardToken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5512732598811111"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"processingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">33</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"72102985-5a92-4cde-a51b-9459d37d97a9"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+						
+								
+
+
+<div title="Error" class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failure"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"resultId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"99392fc1-bcd9-4fb0-8838-7dc37256cb51"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"additionalDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> 
+  </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"messageCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This field is required in [REQUEST]"</span><span class="p">,</span><span class="w"> </span><span class="nl">"fieldName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"password"</span><span class="w"> 
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+</span><span class="nl">"processingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+						
+				</section>
+			
+		</section>
+	
+		<section class="doc-content">
+			<section class="left-docs">
+				<h3>
+					<a id="apirefundApiOperation">
+						REFUND API Operation
+						
+							<span class="endpoint post"></span>
+						
+					</a>
+					<a class="editor-link" href="cloudcannon:collections/_api/refundApiOperation.md">Edit</a>
+				</h3>
+				
+					<p class="description">Refund request</p>
+				
+
+				
+						<h6>Parameters</h6>
+						<dl>
+								
+										<dt>result</dt>
+										<dt1>String(40)</dt1>
+										<dt2></dt2>
+										<dd>Will always be “success” if processed and "failure" if error</dd>
+										
+								
+										<dt>merchantId</dt>
+										<dt1>Integer(18)</dt1>
+										<dt2></dt2>
+										<dd>The merchantId value sent in the Session Token Request</dd>
+										
+								
+										<dt>action</dt>
+										<dt1>String (enum)</dt1>
+										<dt2></dt2>
+										<dd>Will always be “REFUND”</dd>
+										
+								
+										<dt>merchantTxId</dt>
+										<dt1>String (50)</dt1>
+										<dt2></dt2>
+										<dd>Transaction identifier or Order ID in merchant system. Generated by the IPG Gateway, if not received in the Session Token Request</dd>
+										
+								
+										<dt>originalMerchantTxId</dt>
+										<dt1>String (50)</dt1>
+										<dt2></dt2>
+										<dd>The merchant transaction identifier of the transaction that was refunded</dd>
+										
+								
+										<dt>originalTxId</dt>
+										<dt1>Integer (18)</dt1>
+										<dt2></dt2>
+										<dd>The IPG Gateway transaction Id of the transaction refunded sent in the Session Token Request (section 1.1)</dd>
+										
+								
+										<dt>txId</dt>
+										<dt1>Integer (18)</dt1>
+										<dt2></dt2>
+										<dd>The unique identifier for the refund transaction in the IPG Gateway</dd>
+										
+								
+										<dt>amount</dt>
+										<dt1>BigDecimal (15.2 or 15.3)</dt1>
+										<dt2></dt2>
+										<dd>The transaction amount refunded sent in the Session Token Request (section 1.1)</dd>
+										
+								
+										<dt>currency</dt>
+										<dt1>String (enum)</dt1>
+										<dt2></dt2>
+										<dd>The transaction ISO alpha-3 currency code, as defined in the ISO 4217 standard, used in the original and refund transactions</dd>
+										
+								
+										<dt>customerId</dt>
+										<dt1>String (20)</dt1>
+										<dt2></dt2>
+										<dd>The IPG Gateway customer identifier used in the original and refund transactions</dd>
+										
+								
+										<dt>pan</dt>
+										<dt1>String (100)</dt1>
+										<dt2></dt2>
+										<dd>The customer account value/number used in the original and the refund transactions.  For payment card transactions this is the IPG Gateway Card Token.</dd>
+										
+								
+										<dt>brandId</dt>
+										<dt1>Integer(18)</dt1>
+										<dt2></dt2>
+										<dd>The brandId value for the original and the refund transaction</dd>
+										
+								
+										<dt>paymentSolutionId</dt>
+										<dt1>Integer(18)</dt1>
+										<dt2></dt2>
+										<dd>The paymentSolutionId value used in the original and refund transactions</dd>
+										
+								
+										<dt>Status</dt>
+										<dt1>String(enum)</dt1>
+										<dt2></dt2>
+										<dd>The status of the transaction in IPG Gateway -</dd>
+										
+								
+										<dt>errors</dt>
+										<dt1>String(400)</dt1>
+										<dt2></dt2>
+										<dd>Any errors that occurred during the successful processing of a transaction</dd>
+										
+								
+										<dt>resultId</dt>
+										<dt1>String(40)</dt1>
+										<dt2></dt2>
+										<dd>Hexadecimal string that is to be used in any support request calls</dd>
+										
+								
+										<dt>processingTime</dt>
+										<dt1>Integer (18)</dt1>
+										<dt2></dt2>
+										<dd>The time in seconds for the process to complete</dd>
+										
+								
+										<dt>additionalDetails</dt>
+										<dt1>Array</dt1>
+										<dt2></dt2>
+										<dd>Not used – will always be “{}” or not included</dd>
+										
+								
+						</dl>
+				
+
+				
+
+
+				
+						
+								
+
+
+<div title="jQuery" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span> <span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://apiuat.test.boipapaymentgateway.com/token?</span><span class="dl">"</span><span class="o">&gt;</span> <span class="p">{</span>
+<span class="nx">Customer</span> <span class="na">ID</span><span class="p">:</span><span class="nx">hptest</span><span class="p">,</span> <span class="nx">Brand</span> <span class="na">ID</span><span class="p">:</span><span class="mi">897774000</span><span class="o">/</span><span class="p">,</span> <span class="na">channel</span><span class="p">:</span><span class="nx">ECOM</span><span class="p">,</span> <span class="na">currency</span><span class="p">:</span><span class="nx">GBP</span><span class="p">,</span> <span class="na">country</span><span class="p">:</span><span class="nx">GB</span><span class="p">,</span> <span class="na">merchantId</span><span class="p">:</span><span class="mi">897774</span><span class="p">,</span> <span class="na">action</span><span class="p">:</span><span class="nx">PURCHASE</span><span class="p">,</span> <span class="na">amount</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span> <span class="na">password</span><span class="p">:</span><span class="nx">u16q9rZ02bW0jqTjxH8t</span><span class="p">,</span> <span class="na">allowOriginUrl</span><span class="p">:</span><span class="o">*</span><span class="p">,</span> <span class="na">timestamp</span><span class="p">:</span><span class="nx">timestamp</span><span class="p">,</span> <span class="na">paymentSolutionId</span><span class="p">:</span><span class="mi">500</span><span class="p">,</span> <span class="na">merchantNotificationUrl</span><span class="p">:</span><span class="na">https</span><span class="p">:</span><span class="c1">//ptsv2.com/t/v4w7q-1558948751/post, merchantLandingPageUrl:https://ptsv2.com/t/v4w7q-1558948751/post, forceSecurePayment:false, language:en, postCode (CIP):123456</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+								
+						
+			</section>
+			
+					<section class="right-code">
+						
+								
+
+
+<div title="Response" class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"163"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"resultId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4fd9f223-bb1a-4879-a6e6-81a10b53bdca"</span><span class="p">,</span><span class="w">       </span><span class="nl">"originalMerchantTxId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Yn5ufTMdNXwe9bYyrNay"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"txId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11622786"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"additionalDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+   </span><span class="nl">"processingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">948</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"merchantId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"167738"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"brandId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1677380000"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"merchantTxId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lCLe3ImCEPKObYFMdD35"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"customerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zw72ejcNN1OL1Vy2zlnw"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REFUND"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"paymentSolutionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"500"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"pan"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8746507628231111"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"originalTxId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11622153"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SET_FOR_REFUND"</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+						
+								
+
+
+<div title="Error" class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+      </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failure"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"resultId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"308802f2-224d-44f5-b256-8d9443a72770"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"additionalDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+      </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w"> </span><span class="nl">"messageCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This field is required in [TOKEN]"</span><span class="p">,</span><span class="w"> </span><span class="nl">"fieldName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"amount"</span><span class="w"> </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"processingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">173</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+						
+				</section>
+			
+		</section>
+	
+		<section class="doc-content">
+			<section class="left-docs">
+				<h3>
+					<a id="apivoid">
+						Void
+						
+							<span class="endpoint post"></span>
+						
+					</a>
+					<a class="editor-link" href="cloudcannon:collections/_api/void.md">Edit</a>
+				</h3>
+				
+					<p class="description">1	Session Token API Operation</p>
+				
+
+				
+						<h6>Parameters</h6>
+						<dl>
+								
+										<dt>merchantId</dt>
+										<dt1>Integer(18)</dt1>
+										<dt2>mandatory</dt2>
+										<dd>The identifier for the merchant in the IPG Gateway provided at on-boarding.</dd>
+										
+								
+										<dt>password</dt>
+										<dt1>String (64)</dt1>
+										<dt2>mandatory</dt2>
+										<dd>The merchant’s password in the IPG Gatewayprovided at on-boarding</dd>
+										
+								
+										<dt>action</dt>
+										<dt1>String(enum)</dt1>
+										<dt2>mandatory</dt2>
+										<dd>Must be “VOID"</dd>
+										
+								
+										<dt>timestamp</dt>
+										<dt1>Integer (18)</dt1>
+										<dt2>mandatory</dt2>
+										<dd>Miliseconds since 1970-01-01 00:00:00</dd>
+										
+								
+										<dt>allowOriginUrl</dt>
+										<dt1>String (253)</dt1>
+										<dt2>mandatory</dt2>
+										<dd>The merchant's URLthat will make the Auth/Purchase/VerifyRequest(see Section Auth/Purchase/Verify Request) Cross-Origin Resource Sharing (CORS)headers will allow only this origin</dd>
+										
+								
+										<dt>originalTxId</dt>
+										<dt1>Integer (18)</dt1>
+										<dt2>optional</dt2>
+										<dd>The IPG Gateway transaction Id of the transaction to be voided. This will have been returned in the txId field of the Auth/Purchase Response – Processed (see IPG Gateway – 2 – AUTH-PURCHASE-VERIFY – Direct API or IPG Gateway – 2 – AUTH-PURCHASE-VERIFY – Hosted Payment Page, as appropriate to the integration method)</dd>
+										
+								
+										<dt>originalMerchantTxId</dt>
+										<dt1>String (50)</dt1>
+										<dt2>mandatory</dt2>
+										<dd>The merchant’s original transaction identifier of the transaction to be voided, that was provided in the merchantTxId field of the Auth/Purchase Session Token Request and Auth/Purchase Request (see IPG Gateway – 2 – AUTH-PURCHASE-VERIFY – Direct API or IPG Gateway – 2 – AUTH-PURCHASE-VERIFY – Hosted Payment Page, as appropriate to the integration method)</dd>
+										
+								
+										<dt>agentId</dt>
+										<dt1>String (18)</dt1>
+										<dt2>optional</dt2>
+										<dd>Identifier of the merchant’s operator or agent on behalf of the end customer, if the operation is not performed by the merchant, and the merchant wants to track the operator who performed the transaction Note - this is not the same as the operatorId or userAgent fields of the Auth/Purchase Session Token Request and Auth/Purchase/Verify Request (see IPG Gateway – 2 – AUTH-PURCHASE-VERIFY – Direct API or IPG Gateway – 2 – AUTH-PURCHASE-VERIFY – Hosted Payment Page, as appropriate to the integration method)</dd>
+										
+								
+						</dl>
+				
+
+				
+
+
+				
+						
+								
+
+
+<div title="jQuery" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span> <span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://apiuat.test.boipapaymentgateway.com/payment?</span><span class="dl">"</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="nx">merchantId</span><span class="o">=</span><span class="mi">1111111</span><span class="o">&amp;</span><span class="nx">password</span><span class="o">=</span><span class="nx">klw74U6yt40mNo</span><span class="o">&amp;</span><span class="nx">originalTxld</span><span class="o">=</span><span class="mi">1234</span><span class="o">&amp;</span><span class="nx">originalMerchantTxId</span><span class="o">=</span><span class="mi">12345</span><span class="o">&amp;</span><span class="nx">allowOriginUrl</span><span class="o">=</span><span class="nx">www</span><span class="p">.</span><span class="nx">merchantsite</span><span class="p">.</span><span class="nx">com</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+								
+						
+			</section>
+			
+					<section class="right-code">
+						
+								
+
+
+<div title="Response" class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"resultId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"85034083-22dd-49ff-9906-495098c42501"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"merchantId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"167738"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"additionalDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nl">"processingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">33</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"72102985-5a92-4cde-a51b-9459d37d97a9"</span><span class="w">
+
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+						
+								
+
+
+<div title="Error" class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failure"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"resultId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"99392fc1-bcd9-4fb0-8838-7dc37256cb51"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"additionalDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w"> </span><span class="nl">"messageCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This field is required in [REQUEST]"</span><span class="p">,</span><span class="w"> </span><span class="nl">"fieldName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"password"</span><span class="w"> </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"processingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+						
+				</section>
+			
+		</section>
+	
+		<section class="doc-content">
+			<section class="left-docs">
+				<h3>
+					<a id="apivoidApiOperation">
+						VOID API Operation
+						
+							<span class="endpoint post"></span>
+						
+					</a>
+					<a class="editor-link" href="cloudcannon:collections/_api/voidApiOperation.md">Edit</a>
+				</h3>
+				
+					<p class="description">VOID API Operation</p>
+				
+
+				
+						<h6>Parameters</h6>
+						<dl>
+								
+										<dt>result</dt>
+										<dt1>String(40)</dt1>
+										<dt2></dt2>
+										<dd>Will always be “success” if processed and "failure" if error</dd>
+										
+								
+										<dt>merchantId</dt>
+										<dt1>Integer(18)</dt1>
+										<dt2></dt2>
+										<dd>The merchantId value sent in the Session Token Request</dd>
+										
+								
+										<dt>action</dt>
+										<dt1>String (enum)</dt1>
+										<dt2>mandatory</dt2>
+										<dd>Will always be “VOID”</dd>
+										
+								
+										<dt>originalMerchantTxId</dt>
+										<dt1>String (50)</dt1>
+										<dt2></dt2>
+										<dd>The merchant transaction identifier of the transaction that was refunded</dd>
+										
+								
+										<dt>originalTxId</dt>
+										<dt1>Integer (18)</dt1>
+										<dt2></dt2>
+										<dd>The IPG Gateway transaction Id of the transaction refunded sent in the Session Token Request (section 1.1)</dd>
+										
+								
+										<dt>amount</dt>
+										<dt1>BigDecimal (15.2 or 15.3)</dt1>
+										<dt2></dt2>
+										<dd>The transaction amount refunded sent in the Session Token Request (section 1.1)</dd>
+										
+								
+										<dt>currency</dt>
+										<dt1>String (enum)</dt1>
+										<dt2></dt2>
+										<dd>The transaction ISO alpha-3 currency code, as defined in the ISO 4217 standard, used in the original and refund transactions</dd>
+										
+								
+										<dt>customerId</dt>
+										<dt1>String (20)</dt1>
+										<dt2></dt2>
+										<dd>The IPG Gateway customer identifier used in the original and refund transactions</dd>
+										
+								
+										<dt>pan</dt>
+										<dt1>String (100)</dt1>
+										<dt2></dt2>
+										<dd>The customer account value/number used in the original and the refund transactions.  For payment card transactions this is the IPG Gateway Card Token.</dd>
+										
+								
+										<dt>brandId</dt>
+										<dt1>Integer(18)</dt1>
+										<dt2></dt2>
+										<dd>The brandId value for the original and the refund transaction</dd>
+										
+								
+										<dt>paymentSolutionId</dt>
+										<dt1>Integer(18)</dt1>
+										<dt2></dt2>
+										<dd>The paymentSolutionId value used in the original and refund transactions</dd>
+										
+								
+										<dt>Status</dt>
+										<dt1>String(enum)</dt1>
+										<dt2></dt2>
+										<dd>The status of the transaction in IPG Gateway -</dd>
+										
+								
+										<dt>errors</dt>
+										<dt1>String(400)</dt1>
+										<dt2></dt2>
+										<dd>Any errors that occurred during the successful processing of a transaction</dd>
+										
+								
+										<dt>resultId</dt>
+										<dt1>String(40)</dt1>
+										<dt2></dt2>
+										<dd>Hexadecimal string that is to be used in any support request calls</dd>
+										
+								
+										<dt>processingTime</dt>
+										<dt1>Integer (18)</dt1>
+										<dt2></dt2>
+										<dd>The time in seconds for the process to complete</dd>
+										
+								
+										<dt>additionalDetails</dt>
+										<dt1>Array</dt1>
+										<dt2></dt2>
+										<dd>Not used – will always be “{}” or not included</dd>
+										
+								
+										<dt></dt>
+										<dt1></dt1>
+										<dt2></dt2>
+										<dd></dd>
+										
+								
+						</dl>
+				
+
+				
+
+
+				
+			</section>
+			
+					<section class="right-code">
+						
+								
+
+
+<div title="Response" class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="err">“result”:”success”</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"resultId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4fd9f223-bb1a-4879-a6e6-81a10b53bdca"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"merchantId"</span><span class="p">:</span><span class="mi">111111</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"originalMerchantTxId"</span><span class="p">:</span><span class="s2">"abc123"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"originalTxId"</span><span class="p">:</span><span class="mi">123</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="mf">12.50</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"currency"</span><span class="p">:</span><span class="s2">"GBP"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"customerId"</span><span class="p">:</span><span class="s2">"mgn456"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"action"</span><span class="p">:</span><span class="s2">"VOID"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"pan"</span><span class="p">:</span><span class="s2">"45ae201ghy23498FjMj701"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"brandId"</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"paymentSolutionId"</span><span class="p">:</span><span class="mi">500</span><span class="p">,</span><span class="w">
+  </span><span class="err">”status”:”VOID”</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"additionalDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nl">"processingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">948</span><span class="w">
+
+
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+						
+								
+
+
+<div title="Error" class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failure"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"resultId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"308802f2-224d-44f5-b256-8d9443a72770"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"additionalDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w"> </span><span class="nl">"messageCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This field is required in [TOKEN]"</span><span class="p">,</span><span class="w"> </span><span class="nl">"fieldName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"amount"</span><span class="w"> </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"processingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">173</span><span class="w">
+
+
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+						
+				</section>
+			
+		</section>
+	
+		<section class="doc-content">
+			<section class="left-docs">
+				<h3>
+					<a id="apicapture">
+						Capture
+						
+							<span class="endpoint post"></span>
+						
+					</a>
+					<a class="editor-link" href="cloudcannon:collections/_api/capture.md">Edit</a>
+				</h3>
+				
+					<p class="description">Capture operation</p>
+				
+
+				
+						<h6>Parameters</h6>
+						<dl>
+								
+										<dt>merchantId</dt>
+										<dt1>Integer(18)</dt1>
+										<dt2>mandatory</dt2>
+										<dd>The identifier for the merchant in the IPG Gateway provided at on-boarding.</dd>
+										
+								
+										<dt>password</dt>
+										<dt1>String (64)</dt1>
+										<dt2>mandatory</dt2>
+										<dd>The merchant’s password in the IPG Gatewayprovided at on-boarding</dd>
+										
+								
+										<dt>action</dt>
+										<dt1>String(enum)</dt1>
+										<dt2>mandatory</dt2>
+										<dd>Must be “CAPTURE"</dd>
+										
+								
+										<dt>timestamp</dt>
+										<dt1>Integer (18)</dt1>
+										<dt2>mandatory</dt2>
+										<dd>Miliseconds since 1970-01-01 00:00:00</dd>
+										
+								
+										<dt>allowOriginUrl</dt>
+										<dt1>String (253)</dt1>
+										<dt2>mandatory</dt2>
+										<dd>The merchant's URLthat will make the Auth/Purchase/VerifyRequest(see Section Auth/Purchase/Verify Request) Cross-Origin Resource Sharing (CORS)headers will allow only this origin</dd>
+										
+								
+										<dt>originalTxId</dt>
+										<dt1>Integer (18)</dt1>
+										<dt2>optional</dt2>
+										<dd>The IPG Gateway transaction Id of the transaction to be voided. This will have been returned in the txId field of the Auth/Purchase Response – Processed (see IPG Gateway – 2 – AUTH-PURCHASE-VERIFY – Direct API or IPG Gateway – 2 – AUTH-PURCHASE-VERIFY – Hosted Payment Page, as appropriate to the integration method)</dd>
+										
+								
+										<dt>originalMerchantTxId</dt>
+										<dt1>String (50)</dt1>
+										<dt2>mandatory</dt2>
+										<dd>The merchant’s original transaction identifier of the transaction to be voided, that was provided in the merchantTxId field of the Auth/Purchase Session Token Request and Auth/Purchase Request (see IPG Gateway – 2 – AUTH-PURCHASE-VERIFY – Direct API or IPG Gateway – 2 – AUTH-PURCHASE-VERIFY – Hosted Payment Page, as appropriate to the integration method)</dd>
+										
+								
+										<dt>agentId</dt>
+										<dt1>String (18)</dt1>
+										<dt2>optional</dt2>
+										<dd>Identifier of the merchant’s operator or agent on behalf of the end customer, if the operation is not performed by the merchant, and the merchant wants to track the operator who performed the transaction Note - this is not the same as the operatorId or userAgent fields of the Auth/Purchase Session Token Request and Auth/Purchase/Verify Request (see IPG Gateway – 2 – AUTH-PURCHASE-VERIFY – Direct API or IPG Gateway – 2 – AUTH-PURCHASE-VERIFY – Hosted Payment Page, as appropriate to the integration method)</dd>
+										
+								
+										<dt>amount</dt>
+										<dt1>BigDecimal (10.2 or 10.3) BigDecimal (15.2 or 15.3)</dt1>
+										<dt2>mandatory</dt2>
+										<dd>The amount to capture. Can be less than or equal to the original transaction amount. Cannot be more than the original transaction amount</dd>
+										
+								
+										<dt>result</dt>
+										<dt1>String (40)</dt1>
+										<dt2></dt2>
+										<dd>Will always be “success” or "failure"</dd>
+										
+								
+										<dt>merchantId</dt>
+										<dt1>Integer (18)</dt1>
+										<dt2></dt2>
+										<dd>The merchantId value received in the Session Token Request (section 1.1)</dd>
+										
+								
+										<dt>token</dt>
+										<dt1>String (40)</dt1>
+										<dt2></dt2>
+										<dd>The Session Token that is a one-time use, hexadecimal string. The Session Token that must only be used for the Capture Request (see Section 2.1). Session tokens are valid for 3600 second (1 hour) after which they expire. Any requests with expired session tokens will be rejected</dd>
+										
+								
+										<dt>resultId</dt>
+										<dt1>String (40)</dt1>
+										<dt2></dt2>
+										<dd>Hexadecimal string that is to be used in any support request calls</dd>
+										
+								
+										<dt>processingTime</dt>
+										<dt1>Integer (6)</dt1>
+										<dt2></dt2>
+										<dd>The time in seconds for the process to complete</dd>
+										
+								
+										<dt>additionalDetails</dt>
+										<dt1>Array</dt1>
+										<dt2></dt2>
+										<dd>Not used – will always be “{}” or not included</dd>
+										
+								
+										<dt>errors</dt>
+										<dt1>String Array</dt1>
+										<dt2></dt2>
+										<dd>List of issues</dd>
+										
+								
+										<dt></dt>
+										<dt1></dt1>
+										<dt2></dt2>
+										<dd></dd>
+										
+								
+						</dl>
+				
+
+				
+
+
+				
+			</section>
+			
+					<section class="right-code">
+						
+								
+
+
+<div title="Response" class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"result"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"merchantId"</span><span class="p">:</span><span class="mi">1111111</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"token"</span><span class="p">:</span><span class="s2">"abcde12345abcde12345"</span><span class="p">,</span><span class="w">
+  </span><span class="err">”resultId”:”fghij</span><span class="mi">67890</span><span class="err">fghij</span><span class="mi">67890</span><span class="err">”</span><span class="p">,</span><span class="w">
+  </span><span class="err">“processingTime”:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+
+
+
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+						
+								
+
+
+<div title="Error" class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"result"</span><span class="p">:</span><span class="s2">"failure"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"merchantId"</span><span class="p">:</span><span class="mi">1111111</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"errors"</span><span class="p">:[</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"messageCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This field is required in [REQUEST]"</span><span class="p">,</span><span class="w"> </span><span class="nl">"fieldName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"password"</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">],</span><span class="w">
+  </span><span class="err">“processingTime”:</span><span class="w"> </span><span class="mi">4</span><span class="w">
+
+
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+						
+				</section>
+			
+		</section>
+	
+		<section class="doc-content">
+			<section class="left-docs">
+				<h3>
+					<a id="apicaptureApiOperation">
+						CAPTURE API Operation
+						
+							<span class="endpoint post"></span>
+						
+					</a>
+					<a class="editor-link" href="cloudcannon:collections/_api/captureApiOperation.md">Edit</a>
+				</h3>
+				
+					<p class="description">CAPTURE API Operation</p>
+				
+
+				
+						<h6>Parameters</h6>
+						<dl>
+								
+										<dt>result</dt>
+										<dt1>String(40)</dt1>
+										<dt2></dt2>
+										<dd>Will always be “success” if processed and "failure" if error</dd>
+										
+								
+										<dt>merchantId</dt>
+										<dt1>Integer(18)</dt1>
+										<dt2></dt2>
+										<dd>The merchantId value sent in the Session Token Request</dd>
+										
+								
+										<dt>action</dt>
+										<dt1>String (enum)</dt1>
+										<dt2>mandatory</dt2>
+										<dd>Will always be “VOID”</dd>
+										
+								
+										<dt>originalMerchantTxId</dt>
+										<dt1>String (50)</dt1>
+										<dt2></dt2>
+										<dd>The merchant transaction identifier of the transaction that was refunded</dd>
+										
+								
+										<dt>originalTxId</dt>
+										<dt1>Integer (18)</dt1>
+										<dt2></dt2>
+										<dd>The IPG Gateway transaction Id of the transaction refunded sent in the Session Token Request (section 1.1)</dd>
+										
+								
+										<dt>TxId</dt>
+										<dt1>Integer (18)</dt1>
+										<dt2></dt2>
+										<dd>The unique identifier for the capture transaction in the IPG Gateway</dd>
+										
+								
+										<dt>amount</dt>
+										<dt1>BigDecimal (15.2 or 15.3)</dt1>
+										<dt2></dt2>
+										<dd>The transaction amount refunded sent in the Session Token Request (section 1.1)</dd>
+										
+								
+										<dt>customerId</dt>
+										<dt1>String (20)</dt1>
+										<dt2></dt2>
+										<dd>The IPG Gateway customer identifier used in the original and refund transactions</dd>
+										
+								
+										<dt>pan</dt>
+										<dt1>String (100)</dt1>
+										<dt2></dt2>
+										<dd>The customer account value/number used in the original and the refund transactions.  For payment card transactions this is the IPG Gateway Card Token.</dd>
+										
+								
+										<dt>brandId</dt>
+										<dt1>Integer(18)</dt1>
+										<dt2></dt2>
+										<dd>The brandId value for the original and the refund transaction</dd>
+										
+								
+										<dt>paymentSolutionId</dt>
+										<dt1>Integer(18)</dt1>
+										<dt2></dt2>
+										<dd>The paymentSolutionId value used in the original and refund transactions</dd>
+										
+								
+										<dt>Status</dt>
+										<dt1>String(enum)</dt1>
+										<dt2></dt2>
+										<dd>The status of the transaction in IPG Gateway -</dd>
+										
+								
+										<dt>errors</dt>
+										<dt1>String(400)</dt1>
+										<dt2></dt2>
+										<dd>Any errors that occurred during the successful processing of a transaction</dd>
+										
+								
+										<dt>resultId</dt>
+										<dt1>String(40)</dt1>
+										<dt2></dt2>
+										<dd>Hexadecimal string that is to be used in any support request calls</dd>
+										
+								
+										<dt>processingTime</dt>
+										<dt1>Integer (18)</dt1>
+										<dt2></dt2>
+										<dd>The time in seconds for the process to complete</dd>
+										
+								
+										<dt>additionalDetails</dt>
+										<dt1>Array</dt1>
+										<dt2></dt2>
+										<dd>Not used – will always be “{}” or not included</dd>
+										
+								
+										<dt>errors</dt>
+										<dt1>String Array</dt1>
+										<dt2></dt2>
+										<dd>List of errors</dd>
+										
+								
+										<dt></dt>
+										<dt1></dt1>
+										<dt2></dt2>
+										<dd></dd>
+										
+								
+						</dl>
+				
+
+				
+
+
+				
+			</section>
+			
+					<section class="right-code">
+						
+								
+
+
+<div title="Response" class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="err">“result”:”success”</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"merchantId"</span><span class="p">:</span><span class="mi">111111</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"originalMerchantTxId"</span><span class="p">:</span><span class="s2">"abc123"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"originalTxId"</span><span class="p">:</span><span class="mi">123</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="mf">12.50</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"customerId"</span><span class="p">:</span><span class="s2">"mgn456"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"action"</span><span class="p">:</span><span class="s2">"CAPTURE"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"pan"</span><span class="p">:</span><span class="s2">"45ae201ghy23498FjMj701"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"brandId"</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"paymentSolutionId"</span><span class="p">:</span><span class="mi">500</span><span class="p">,</span><span class="w">
+  </span><span class="err">”status”:”SET_FOR_CAPTURE”</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"resultId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4fd9f223-bb1a-4879-a6e6-81a10b53bdca"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"processingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">948</span><span class="w">
+
+
+
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+						
+								
+
+
+<div title="Error" class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failure"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"resultId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"308802f2-224d-44f5-b256-8d9443a72770"</span><span class="p">,</span><span class="w">
+
+  </span><span class="nl">"additionalDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w"> </span><span class="nl">"messageCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This field is required in [TOKEN]"</span><span class="p">,</span><span class="w"> </span><span class="nl">"fieldName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"amount"</span><span class="w"> </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"processingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">173</span><span class="w">
+
+
+
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+						
+				</section>
+			
+		</section>
+	
+		<section class="doc-content">
+			<section class="left-docs">
+				<h3>
+					<a id="apitransactionResultCall">
+						Transaction Result Call
+						
+							<span class="endpoint post"></span>
+						
+					</a>
+					<a class="editor-link" href="cloudcannon:collections/_api/transactionResultCall.md">Edit</a>
+				</h3>
+				
+					<p class="description">The purpose of this document is to describe the TRANSACTION RESULT CALL API Operation to enable merchant developers to integrate their webpages with the IPG Gateway.  Refer to the IPG Gateway – 0 – Overview document for how this API Operation is used in the merchant processes.</p>
+				
+
+				
+						<h6>Parameters</h6>
+						<dl>
+								
+										<dt>merchantId</dt>
+										<dt1>Integer(18)</dt1>
+										<dt2></dt2>
+										<dd>The merchantId value received in the Session Token Request of the API Operation</dd>
+										
+								
+										<dt>action</dt>
+										<dt1>String (enum)</dt1>
+										<dt2></dt2>
+										<dd>The action received in the Session Token Request of the API Operation</dd>
+										
+								
+										<dt>merchantTxId</dt>
+										<dt1>String (50)</dt1>
+										<dt2></dt2>
+										<dd>The merchant’s reference for the transaction provided in the merchantTxId parameter in the API Operation. If the merchantTxId parameter was empty or omitted, a value will have been generated by the IPG Gateway as a hexadecimal string.</dd>
+										
+								
+										<dt>merchantFreeText</dt>
+										<dt1>String (200)</dt1>
+										<dt2></dt2>
+										<dd>The free text field contents sent in the in the Session Token Request of the Auth/Purchase/Verify API Operation for the merchant’s comments about the transaction</dd>
+										
+								
+										<dt>txId</dt>
+										<dt1>Integer (18)</dt1>
+										<dt2></dt2>
+										<dd>The unique identifier for the transaction in the IPG Gateway. Note - Only returned for a REFUND action.</dd>
+										
+								
+										<dt>acquirerTxId</dt>
+										<dt1>String(50)</dt1>
+										<dt2></dt2>
+										<dd>The transaction identifier in acquirer system, if acquirer returns it</dd>
+										
+								
+										<dt>originalTxId</dt>
+										<dt1>Integer (18)</dt1>
+										<dt2></dt2>
+										<dd>The IPG Gateway identifier of the original transaction</dd>
+										
+								
+										<dt>amount</dt>
+										<dt1>BigDecimal (15.3)</dt1>
+										<dt2></dt2>
+										<dd>The total transaction amount, including tax, shipping, surcharge and discount amounts.</dd>
+										
+								
+										<dt>currency</dt>
+										<dt1>String (enum)</dt1>
+										<dt2></dt2>
+										<dd>The ISO alpha-3 code for the currency of the transaction, as defined in the ISO 4217 standard</dd>
+										
+								
+										<dt>customerId</dt>
+										<dt1>String (20)</dt1>
+										<dt2></dt2>
+										<dd>The IPG Gateway customer identifier used in the original and refund transactions</dd>
+										
+								
+										<dt>pan</dt>
+										<dt1>String (100)</dt1>
+										<dt2></dt2>
+										<dd>Customer payment account number (for non-card payments) or IPG Gateway payment card token number used in the transaction.</dd>
+										
+								
+										<dt>brandId</dt>
+										<dt1>Integer(18)</dt1>
+										<dt2></dt2>
+										<dd>The Brand Id used in the transaction, which was supplied by the IPG Gateway when the merchant account was set up in the IPG Gateway</dd>
+										
+								
+										<dt>paymentSolutionId</dt>
+										<dt1>Integer(18)</dt1>
+										<dt2></dt2>
+										<dd>The IPG Gateway Payment Solution Identifier used in the transaction.  The payment solutions that are available to the merchant can be found using the API Operation detailed in the IPG Gateway - 8 - GET AVAILABLE PAYMENT SOLUTIONS document.</dd>
+										
+								
+										<dt>status</dt>
+										<dt1>String(enum)</dt1>
+										<dt2></dt2>
+										<dd>The transaction status in the IPG Gateway after the API Operation is completed.</dd>
+										
+								
+										<dt>acquirer</dt>
+										<dt1>String(100)</dt1>
+										<dt2></dt2>
+										<dd>For payment cards the acquirer name. For non-card payments the payment solution name</dd>
+										
+								
+										<dt>acquirerAmount</dt>
+										<dt1>BigDecimal (15.3)</dt1>
+										<dt2></dt2>
+										<dd>Amount processed by payment acquirer. May be different to amount in the original transaction, especially if the acquirer processed the transaction in a different currency</dd>
+										
+								
+										<dt>acquirerCurrency</dt>
+										<dt1>String(enum)</dt1>
+										<dt2></dt2>
+										<dd>The ISO alpha-3 currency code, as defined in the ISO 4217 standard, of the currency processed by the payment acquirer, which maybe different to the currency in the original transaction, e.g. if a currency conversion was applied</dd>
+										
+								
+										<dt>country</dt>
+										<dt1>String(enum)</dt1>
+										<dt2></dt2>
+										<dd>The ISO alpha-2 code country in which the transaction took place, as defined in the ISO 3166 standard</dd>
+										
+								
+										<dt>freeText</dt>
+										<dt1>String(200)</dt1>
+										<dt2></dt2>
+										<dd>Merchant’s free text that was supplied in the freeText field in the original Session Token or Action Request</dd>
+										
+								
+										<dt>paymentSolutionDetails</dt>
+										<dt1>JSON block</dt1>
+										<dt2></dt2>
+										<dd>For payment cards only-  the Transaction Authorisation Code received from the acquirer, format</dd>
+										
+								
+										<dt>errors</dt>
+										<dt1>String (400)</dt1>
+										<dt2></dt2>
+										<dd>Only applies to ERROR transactions. It is a brief description of the cause of the error</dd>
+										
+								
+										<dt>result</dt>
+										<dt1>String (enum)</dt1>
+										<dt2></dt2>
+										<dd>Determines processing result. Possible values</dd>
+										
+								
+										<dt>additionalDetails</dt>
+										<dt1>Array</dt1>
+										<dt2></dt2>
+										<dd>Optional data associated with the transactions. Currently - ageCheck description</dd>
+										
+								
+						</dl>
+				
+
+				
+
+
+				
+			</section>
+			
+		</section>
+	
+		<section class="doc-content">
+			<section class="left-docs">
+				<h3>
+					<a id="apisessiontoken">
+						/session token/
+						
+							<span class="endpoint post"></span>
+						
+					</a>
+					<a class="editor-link" href="cloudcannon:collections/_api/sessiontoken.md">Edit</a>
+				</h3>
+				
+					<p class="description">Get session token</p>
+				
+
+				
+						<h6>Parameters</h6>
+						<dl>
+								
+										<dt>merchantId</dt>
+										<dt1>Integer(18)</dt1>
+										<dt2>mandatory</dt2>
+										<dd>The identifier for the merchant in the IPG Gateway provided at on-boarding</dd>
+										
+								
+										<dt>password</dt>
+										<dt1>String (64)</dt1>
+										<dt2>mandatory</dt2>
+										<dd>The merchant’s password to the IPG Gateway provided at on-boarding</dd>
+										
+								
+										<dt>action</dt>
+										<dt1>String (enum)</dt1>
+										<dt2>mandatory</dt2>
+										<dd>Must be “TOKENIZE”</dd>
+										
+								
+										<dt>timestamp</dt>
+										<dt1>Integer (13)</dt1>
+										<dt2>mandatory</dt2>
+										<dd>milliseconds since 1970-01-01 00:00:00</dd>
+										
+								
+										<dt>allowOriginUrl</dt>
+										<dt1>String (253)</dt1>
+										<dt2>mandatory</dt2>
+										<dd>The merchant's URL that will make the Tokenize Request Cross-Origin Resource Sharing (CORS) headers will allow only this origin.</dd>
+										
+								
+										<dt>customerId</dt>
+										<dt1>String (20)</dt1>
+										<dt2>optional</dt2>
+										<dd>Customer identifier in merchant system. If the parameter is omitted or no value is provided, the IPG Gateway will generate a value, which will be returned in the Session Token Response - Processed (see section 1.2). The received or generated value is stored against the card token.</dd>
+										
+								
+										<dt>cardDescription</dt>
+										<dt1>String (50)</dt1>
+										<dt2>optional</dt2>
+										<dd>Free form text field for the merchant’s use that is used for reconciliation e.g. merchant’s internal card’s sequence id</dd>
+										
+								
+						</dl>
+				
+
+				
+
+
+				
+						
+								
+
+
+<div title="jQuery" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span> <span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://apiuat.test.boipapaymentgateway.com/token?</span><span class="dl">"</span><span class="o">&gt;</span> <span class="p">{</span>
+<span class="nx">Customer</span> <span class="na">ID</span><span class="p">:</span><span class="nx">hptest</span><span class="p">,</span> <span class="nx">Brand</span> <span class="na">ID</span><span class="p">:</span><span class="mi">897774000</span><span class="o">/</span><span class="p">,</span> <span class="na">channel</span><span class="p">:</span><span class="nx">ECOM</span><span class="p">,</span> <span class="na">currency</span><span class="p">:</span><span class="nx">GBP</span><span class="p">,</span> <span class="na">country</span><span class="p">:</span><span class="nx">GB</span><span class="p">,</span> <span class="na">merchantId</span><span class="p">:</span><span class="mi">897774</span><span class="p">,</span> <span class="na">action</span><span class="p">:</span><span class="nx">PURCHASE</span><span class="p">,</span> <span class="na">amount</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span> <span class="na">password</span><span class="p">:</span><span class="nx">u16q9rZ02bW0jqTjxH8t</span><span class="p">,</span> <span class="na">allowOriginUrl</span><span class="p">:</span><span class="o">*</span><span class="p">,</span> <span class="na">timestamp</span><span class="p">:</span><span class="nx">timestamp</span><span class="p">,</span> <span class="na">paymentSolutionId</span><span class="p">:</span><span class="mi">500</span><span class="p">,</span> <span class="na">merchantNotificationUrl</span><span class="p">:</span><span class="na">https</span><span class="p">:</span><span class="c1">//ptsv2.com/t/v4w7q-1558948751/post, merchantLandingPageUrl:https://ptsv2.com/t/v4w7q-1558948751/post, forceSecurePayment:false, language:en, postCode (CIP):123456</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+								
+						
+			</section>
+			
+					<section class="right-code">
+						
+								
+
+
+<div title="Response" class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"resultId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f52cc38a-7815-4f8c-8687-662cc63d56e9"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"merchantId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"890490"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"additionalDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="nl">"processingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"96b7d82e-349f-4880-9b8a-928636437c75"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+						
+								
+
+
+<div title="Error" class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failure"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"resultId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bb248d1d-d657-4dbe-9f04-a279b384872c"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"additionalDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="nl">"messageCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This field is required in [REQUEST]"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"fieldName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"password"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"processingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+						
+				</section>
+			
+		</section>
+	
+
+	
+	
+		<section class="doc-content">
+			<section class="left-docs">
+				<h3>
+					<a id="usecasespaymentFormBrandingAndLocalization">
+						Payment Form Branding & Localisation
+						
+					</a>
+					<a class="editor-link" href="cloudcannon:collections/_usecases/paymentFormBrandingAndLocalization.md">Edit</a>
+				</h3>
+				
+
+				
+
+				<p>However, the Hosted Payment Form is loaded, it is possible to customise the Hosted Payment Form to match the design and branding of the merchant’s webpage. The merchant must provide the IPG Gateway with the CSS and image files.  Sample files can be supplied on request.  The customised CSS file must be delivered to the IPG Gateway Support Team for review and sign off to ensure code integrity and security.  The files will be loaded to the merchant’s configuration in the IPG Gateway.</p>
+
+<p>Localisation - Merchants will present different languages on their website.  The Hosted Payment Page should reflect the language being viewed by the customer.</p>
+
+<p>The language used in the Hosted Payment Form is determined by the value provided in the language parameter in the Session Token Request (section 1.1).</p>
+
+<p>If IPG Gateway does not support the requested language the default will be Spanish.  However, to ensure the language is supported, the merchant should contact IPG Gateway Support Team to have the language added to the IPG Gateway suite.</p>
+
+
+				
+			</section>
+			
+		</section>
+	
+		<section class="doc-content">
+			<section class="left-docs">
+				<h3>
+					<a id="usecasesIncomingTokenMigration">
+						Incoming Token Migration
+						
+					</a>
+					<a class="editor-link" href="cloudcannon:collections/_usecases/IncomingTokenMigration.md">Edit</a>
+				</h3>
+				
+
+				
+
+				<p>This API Operations Overview is intended enable planning and integration with the IPG Gateway APIs  by:</p>
+<ul>
+  <li>Merchant business and technology staff</li>
+  <li>Shopping Cart Plugin providers</li>
+</ul>
+
+<p>The document defines the external interfaces to the IPG Gateway necessary to:</p>
+<ul>
+  <li>Request payment card tokens</li>
+  <li>Submit authorisation transactions</li>
+  <li>Submit purchases/sales transactions</li>
+  <li>Capture (full or partial) funds from customers’ accounts as a result of successful authorisation transactions</li>
+  <li>Void authorised payment requests</li>
+  <li>Refund (full or partial) purchases (captured payments)</li>
+  <li>Request transactions statuses</li>
+  <li>Integrate PCI Compliant Payment Forms</li>
+  <li>Receive Transaction Call results</li>
+</ul>
+
+<p>The reader should have the knowledge and understanding of the payments industry processes, and the role of the payment processer (the IPG Gateway) in those payment processes.</p>
+
+<p class="success">You’ll succeed if you do this.</p>
+
+<p class="info">Here’s some useful information.</p>
+
+<p class="warning">Something may not happen if you try and do this.</p>
+
+<p class="error">Something bad will happen if you do this.</p>
+
+
+				
+			</section>
+			
+		</section>
+	
+
+
+		</div>
+		<script>
+			document.getElementById("open-nav").addEventListener("click", function () {
+				document.body.classList.toggle("nav-open");
+			});
+		</script>
+	</body>
+</html>

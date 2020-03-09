@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<!-- Begin Jekyll SEO tag v2.4.0 -->
+<title>Search | EVO Payments Gateway</title>
+<meta name="generator" content="Jekyll v3.7.2" />
+<meta property="og:title" content="Search" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="EVO Payment Integration Guide." />
+<meta property="og:description" content="EVO Payment Integration Guide." />
+<link rel="canonical" href="http://localhost:4000/search/" />
+<meta property="og:url" content="http://localhost:4000/search/" />
+<meta property="og:site_name" content="EVO Payments Gateway" />
+<script type="application/ld+json">
+{"url":"http://localhost:4000/search/","headline":"Search","description":"EVO Payment Integration Guide.","@type":"WebPage","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+		<link rel="stylesheet" href="/css/style.css">
+		<link rel="icon" type="image/png" href="/favicon.png">
+
+		
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		<script src="/js/main.js"></script>
+	</head>
+	<body>
+		<header>
+			<h1>
+				<button type="button" class="open-nav" id="open-nav"></button>
+				<a href="/"><img src="/images/logo.svg" height="40" alt="EVO Payments Gateway logo"></a>
+			</h1>
+
+			<form action="/search/" method="get">
+				<input type="text" name="q" id="search-input" placeholder="Search">
+				<input type="submit" value="Search" style="display: none;">
+			</form>
+
+			<div id="sidebar" class="sidebar">
+	
+	
+		
+	
+		
+			<section>
+				<h6>Getting Started</h6>
+				<ul>
+					
+					
+						<li>
+							<a href="/#gettingstartedoverview">
+								Api Operations Overview
+								
+							</a>
+						</li>
+					
+				</ul>
+			</section>
+		
+	
+		
+			<section>
+				<h6>API Endpoint</h6>
+				<ul>
+					
+					
+						<li>
+							<a href="/#apidirectAPI (1)">
+								
+								
+							</a>
+						</li>
+					
+						<li>
+							<a href="/#apipayment">
+								/payment
+								<span class="endpoint post"></span>
+							</a>
+						</li>
+					
+						<li>
+							<a href="/#apitokenize">
+								Tokenize Card
+								<span class="endpoint post"></span>
+							</a>
+						</li>
+					
+						<li>
+							<a href="/#apidirectAPI (2)">
+								Direct API Integration
+								<span class="endpoint post"></span>
+							</a>
+						</li>
+					
+						<li>
+							<a href="/#apiauthPurchaseVerifyAPIOperation">
+								AUTH/PURCHASE/VERIFY API Operation
+								<span class="endpoint post"></span>
+							</a>
+						</li>
+					
+						<li>
+							<a href="/#apihostedPaymentPage">
+								Hosted Payment Page
+								<span class="endpoint post"></span>
+							</a>
+						</li>
+					
+						<li>
+							<a href="/#apipaymentFormBrandingAndLocalization">
+								Payment Form Branding & Localisation
+								<span class="endpoint post"></span>
+							</a>
+						</li>
+					
+						<li>
+							<a href="/#apirefund">
+								Refund Session token request
+								<span class="endpoint post"></span>
+							</a>
+						</li>
+					
+						<li>
+							<a href="/#apirefundApiOperation">
+								REFUND API Operation
+								<span class="endpoint post"></span>
+							</a>
+						</li>
+					
+						<li>
+							<a href="/#apivoid">
+								Void
+								<span class="endpoint post"></span>
+							</a>
+						</li>
+					
+						<li>
+							<a href="/#apivoidApiOperation">
+								VOID API Operation
+								<span class="endpoint post"></span>
+							</a>
+						</li>
+					
+						<li>
+							<a href="/#apicapture">
+								Capture
+								<span class="endpoint post"></span>
+							</a>
+						</li>
+					
+						<li>
+							<a href="/#apicaptureApiOperation">
+								CAPTURE API Operation
+								<span class="endpoint post"></span>
+							</a>
+						</li>
+					
+						<li>
+							<a href="/#apitransactionResultCall">
+								Transaction Result Call
+								<span class="endpoint post"></span>
+							</a>
+						</li>
+					
+						<li>
+							<a href="/#apisessiontoken">
+								/session token/
+								<span class="endpoint post"></span>
+							</a>
+						</li>
+					
+				</ul>
+			</section>
+		
+	
+		
+			<section>
+				<h6>Use Cases</h6>
+				<ul>
+					
+					
+						<li>
+							<a href="/#usecasespaymentFormBrandingAndLocalization">
+								Payment Form Branding & Localisation
+								
+							</a>
+						</li>
+					
+						<li>
+							<a href="/#usecasesIncomingTokenMigration">
+								Incoming Token Migration
+								
+							</a>
+						</li>
+					
+				</ul>
+			</section>
+		
+	
+</div>
+
+
+			<p class="copyright">
+				<a href="https://intelligentpayments.co.uk">
+					Copyright Intelligent Payments 2019
+				</a>
+			</p>
+		</header>
+		<div class="main">
+			<div class="search-page">
+	<h2>Search Results</h2>
+
+	<p><span id="search-process">Loading</span> results <span id="search-query-container" style="display: none;">for "<strong id="search-query"></strong>"</span></p>
+	<ul id="search-results"></ul>
+</div>
+
+<script>
+	window.data = {
+		
+			
+				
+					
+						
+						
+						"api-authpurchaseverifyapioperation": {
+							"id": "api-authpurchaseverifyapioperation",
+							"title": "AUTH/PURCHASE/VERIFY API Operation",
+							"category": "api",
+							"description": "AUTH/PURCHASE/VERIFY API Request",
+		  				"type": "post",
+							"url": "/#apiauthPurchaseVerifyAPIOperation",
+							"content": ""
+						}
+						
+					
+				
+			
+				
+					
+						,
+						
+						"api-capture": {
+							"id": "api-capture",
+							"title": "Capture",
+							"category": "api",
+							"description": "Capture operation",
+		  				"type": "post",
+							"url": "/#apicapture",
+							"content": ""
+						}
+						
+					
+				
+			
+				
+					
+						,
+						
+						"api-captureapioperation": {
+							"id": "api-captureapioperation",
+							"title": "CAPTURE API Operation",
+							"category": "api",
+							"description": "CAPTURE API Operation",
+		  				"type": "post",
+							"url": "/#apicaptureApiOperation",
+							"content": ""
+						}
+						
+					
+				
+			
+				
+			
+				
+					
+						,
+						
+						"api-directapi-2": {
+							"id": "api-directapi-2",
+							"title": "Direct API Integration",
+							"category": "api",
+							"description": "The purpose of this document is to describe the AUTH/PURCHASE/VERIFY (Direct API Integration) API Operation to enable merchant developers to integrate their webpages with the IPG Gateway.  Refer to the IPG Gateway – 0 – Overview document for how this API Operation is used in the merchant processes. The AUTH/PURCHASE/VERIFY (Direct API Integration) API Operation allows the merchant using the Direct API Integration Method to send customer authorise and purchase payment card transactions, or payment card details for verification through the IPG Gateway",
+		  				"type": "post",
+							"url": "/#apidirectAPI (2)",
+							"content": ""
+						}
+						
+					
+				
+			
+				
+					
+						,
+						
+						"api-hostedpaymentpage": {
+							"id": "api-hostedpaymentpage",
+							"title": "Hosted Payment Page",
+							"category": "api",
+							"description": "The purpose of this document is to describe the AUTH/PURCHASE/VERIFY (Hosted Payment Page Integration) API Operation to enable merchant developers to integrate their webpages with the IPG Gateway.  Refer to the IPG Gateway – 0 – Overview document for how this API Operation is used in the merchant processes.. The AUTH/PURCHASE/VERIFY (Hosted Payment Page Integration) API Operation allows the merchant using the Hosted Payment Page or Shopping Cart Plugins Integration Method to send customer authorise and purchase payment card transactions, or payment card details for verification through the IPG Gateway.",
+		  				"type": "post",
+							"url": "/#apihostedPaymentPage",
+							"content": ""
+						}
+						
+					
+				
+			
+				
+					
+						,
+						
+						"api-payment": {
+							"id": "api-payment",
+							"title": "/payment",
+							"category": "api",
+							"description": "",
+		  				"type": "post",
+							"url": "/#apipayment",
+							"content": "title: /payment\nposition_number: 1.1\ntype: post\ndescription: Actions\nparameters:\n\n  name: Purchase\ncontent: short description\n  name: Authorize\ncontent: short description\n    \n      name: Verify\ncontent: short description\n    \n  \n  name: Tokenize\ncontent: short description\n\n\ncontent_markdown: \nYou can’t make these calls without a session token\nYou can’t make these calls without a session token\nPlease make sure that you’re passing these calls from a whitelisted IP"
+						}
+						
+					
+				
+			
+				
+					
+						,
+						
+						"api-paymentformbrandingandlocalization": {
+							"id": "api-paymentformbrandingandlocalization",
+							"title": "Payment Form Branding &amp; Localisation",
+							"category": "api",
+							"description": "However, the Hosted Payment Form is loaded, it is possible to customise the Hosted Payment Form to match the design and branding of the merchant’s webpage. The merchant must provide the IPG Gateway with the CSS and image files.  Sample files can be supplied on request.  The customised CSS file must be delivered to the IPG Gateway Support Team for review and sign off to ensure code integrity and security.  The files will be loaded to the merchant’s configuration in the IPG Gateway.",
+		  				"type": "post",
+							"url": "/#apipaymentFormBrandingAndLocalization",
+							"content": ""
+						}
+						
+					
+				
+			
+				
+					
+						,
+						
+						"api-refund": {
+							"id": "api-refund",
+							"title": "Refund Session token request",
+							"category": "api",
+							"description": "The purpose of this document is to describe the REFUND API Operation to enable merchant developers to integrate their webpages with the IPG Gateway.  Refer to the IPG Gateway – 0 – Overview document for how this API Operation is used in the merchant processes. The IPG Gateway caters for full or partial refunds. More than one refund can be performed on a single transaction.  However, the refund amounts cannot exceed the original transaction amount. Refunds can only be performed on transactions with the status of CAPTURED.",
+		  				"type": "post",
+							"url": "/#apirefund",
+							"content": ""
+						}
+						
+					
+				
+			
+				
+					
+						,
+						
+						"api-refundapioperation": {
+							"id": "api-refundapioperation",
+							"title": "REFUND API Operation",
+							"category": "api",
+							"description": "Refund request",
+		  				"type": "post",
+							"url": "/#apirefundApiOperation",
+							"content": ""
+						}
+						
+					
+				
+			
+				
+					
+						,
+						
+						"api-sessiontoken": {
+							"id": "api-sessiontoken",
+							"title": "/session token/",
+							"category": "api",
+							"description": "Get session token",
+		  				"type": "post",
+							"url": "/#apisessiontoken",
+							"content": ""
+						}
+						
+					
+				
+			
+				
+					
+						,
+						
+						"api-tokenize": {
+							"id": "api-tokenize",
+							"title": "Tokenize Card",
+							"category": "api",
+							"description": "Tokenize a card",
+		  				"type": "post",
+							"url": "/#apitokenize",
+							"content": ""
+						}
+						
+					
+				
+			
+				
+					
+						,
+						
+						"api-transactionresultcall": {
+							"id": "api-transactionresultcall",
+							"title": "Transaction Result Call",
+							"category": "api",
+							"description": "The purpose of this document is to describe the TRANSACTION RESULT CALL API Operation to enable merchant developers to integrate their webpages with the IPG Gateway.  Refer to the IPG Gateway – 0 – Overview document for how this API Operation is used in the merchant processes.",
+		  				"type": "post",
+							"url": "/#apitransactionResultCall",
+							"content": ""
+						}
+						
+					
+				
+			
+				
+					
+						,
+						
+						"api-void": {
+							"id": "api-void",
+							"title": "Void",
+							"category": "api",
+							"description": "1	Session Token API Operation",
+		  				"type": "post",
+							"url": "/#apivoid",
+							"content": ""
+						}
+						
+					
+				
+			
+				
+					
+						,
+						
+						"api-voidapioperation": {
+							"id": "api-voidapioperation",
+							"title": "VOID API Operation",
+							"category": "api",
+							"description": "VOID API Operation",
+		  				"type": "post",
+							"url": "/#apivoidApiOperation",
+							"content": ""
+						}
+						
+					
+				
+			
+		
+			
+				
+					
+						,
+						
+						"gettingstarted-overview": {
+							"id": "gettingstarted-overview",
+							"title": "Api Operations Overview",
+							"category": "gettingstarted",
+							"description": "",
+		  				"type": "",
+							"url": "/#gettingstartedoverview",
+							"content": ""
+						}
+						
+					
+				
+			
+		
+			
+		
+			
+				
+					
+						,
+						
+						"usecases-incomingtokenmigration": {
+							"id": "usecases-incomingtokenmigration",
+							"title": "Incoming Token Migration",
+							"category": "usecases",
+							"description": "",
+		  				"type": "",
+							"url": "/#usecasesIncomingTokenMigration",
+							"content": ""
+						}
+						
+					
+				
+			
+				
+					
+						,
+						
+						"usecases-paymentformbrandingandlocalization": {
+							"id": "usecases-paymentformbrandingandlocalization",
+							"title": "Payment Form Branding &amp; Localisation",
+							"category": "usecases",
+							"description": "",
+		  				"type": "",
+							"url": "/#usecasespaymentFormBrandingAndLocalization",
+							"content": "#description: Appendix A\tUAT Trigger Values\n#des: When integrating with the IPG Gateway in the User Acceptance Testing (UAT) environment, certain amount values in the Session Token Request (section 1.1) can be used to elicit status and error messages.  This facility is provided to merchants so that testing can be confirmed against these expected errors.\n\nparameters:\n\n  Amount: 0.00\nStatus: SUCCESS\nError message: {none}\n  Ammount: 0.01\nStatus: SUCCESS\nError message: {none}\n  Amount: 0.02\nStatus: SUCCESS\nError message: {none}\n  Amount: 0.03\nStatus: ERROR\nError message: Refer to card issuer\n  Amount: 0.04\nStatus: ERROR\nError message: Refer to card issuer, special condition\n  Amount: 0.05\nStatus: ERROR\nError message: Invalid merchant\n  Amount: 0.06\nStatus: SUCCESS\nError message: {none}\n  Amount: 0.07\nStatus: ERROR\nError message: Pick-up card\n  Amount: 0.08\nStatus: ERROR\nError message: Do not honor"
+						}
+						
+					
+				
+			
+		
+	};
+</script>
+<script src="/js/lunr.min.js"></script>
+<script src="/js/search.js"></script>
+
+		</div>
+		<script>
+			document.getElementById("open-nav").addEventListener("click", function () {
+				document.body.classList.toggle("nav-open");
+			});
+		</script>
+	</body>
+</html>
